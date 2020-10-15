@@ -1,7 +1,18 @@
 #logo {
-  display: block;
   width: 120px;
   height: 120px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.confirm_btn {
+  width: 100%;
+  font-weight: bold !important;
+  text-transform: uppercase;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=styles.css.map */
