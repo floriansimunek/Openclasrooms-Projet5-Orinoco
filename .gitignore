@@ -1,2 +1,5 @@
 /dart-sass
 debug.log
+/node_modules
+/.idea
+package-lock.json

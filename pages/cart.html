@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="../css/styles.css" rel="stylesheet">
+      <title>Panier - Orinoco</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" defer></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <p class="navbar-toggler-icon"></p>
+         </button>
+         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="nav navbar-nav">
+               <li class="nav-item">
+                  <a class="nav-link" href="#">Produits</a>
+               </li>
+               <li class="nav-item">
+                  <a href="cart.html" class="nav-link">Panier</a>
+               </li>
+               <li class="nav-item">
+                  <a class="navbar-brand" href="../index.html"><img src="../images/teddy.webp" id="logo" alt="Teddy-Bear"></a>
+               </li>
+               <li class="nav-item">
+                  <a href="achat.html" class="nav-link">Achat</a>
+               </li>
+               <li class="nav-item">
+                  <a href="register.html" class="nav-link">Compte</a>
+               </li>
+            </ul>
+         </div>
+      </nav>
+	  
+      <div class="row mt-5 mb-5 justify-content-center">
+         <aside class="col-lg-8">
+            <div class="card">
+               <table class="table table-borderless table-shopping-cart">
+                  <thead class="text-muted">
+                     <tr class="small text-uppercase">
+                        <th scope="col">Produit</th>
+                        <th scope="col" width="120">Quantité</th>
+                        <th scope="col" width="120">Prix</th>
+                        <th scope="col" class="text-right" width="200"> </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>
+                           <figure class="itemside align-items-center">
+                              <div class="aside col-lg-6"><img src="images/teddy_1.jpg" class="card-img"></div>
+                              <figcaption class="info">
+                                 <a href="#" class="title text-dark">Teddy #1</a>
+                                 <p class="text-muted small">Couleur: rouge, bleu ou marron</p>
+                              </figcaption>
+                           </figure>
+                        </td>
+                        <td>
+                           <select class="form-control">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                           </select>
+                        </td>
+                        <td>
+                           <div class="price-wrap"> 
+                              <var class="price">19.99€</var> 
+                              <small class="text-muted"> 19.99€/unité </small> 
+                           </div>
+                        </td>
+                        <td class="text-right"> 
+                           <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
+                           <a href="" class="btn btn-danger"> Supprimer</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <figure class="itemside align-items-center">
+                              <div class="aside col-lg-6"><img src="images/teddy_2.jpg" class="card-img"></div>
+                              <figcaption class="info">
+                                 <a href="#" class="title text-dark">Teddy #2</a>
+                                 <p class="text-muted small">Couleur: rouge, bleu ou marron</p>
+                              </figcaption>
+                           </figure>
+                        </td>
+                        <td>
+                           <select class="form-control">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                           </select>
+                        </td>
+                        <td>
+                           <div class="price-wrap"> 
+                              <var class="price">29.99€</var> 
+                              <small class="text-muted"> 29.99€/unité </small>  
+                           </div>
+                        </td>
+                        <td class="text-right"> 
+                           <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
+                           <a href="" class="btn btn-danger"> Supprimer</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <figure class="itemside align-items-center">
+                              <div class="aside col-lg-6"><img src="images/teddy_3.jpg" class="card-img"></div>
+                              <figcaption class="info">
+                                 <a href="#" class="title text-dark">Teddy #3</a>
+                                 <p class="small text-muted">Couleur: rouge, bleu ou marron<</p>
+                              </figcaption>
+                           </figure>
+                        </td>
+                        <td>
+                           <select class="form-control">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                           </select>
+                        </td>
+                        <td>
+                           <div class="price-wrap"> 
+                              <var class="price">9.99€</var> 
+                              <small class="text-muted"> 9.99€/unité </small> 
+                           </div>
+                        </td>
+                        <td class="text-right"> 
+                           <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
+                           <a href="" class="btn btn-danger"> Supprimer</a>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+
+            </div>
+         </aside>
+         <aside class="col-lg-2">
+            <div class="card mb-3">
+               <div class="card-body">
+                  <form>
+                     <div class="form-group">
+                        <label>Coupon de réduction?</label>
+                        <div class="input-group">
+                           <input type="text" class="form-control" name="" placeholder="Code du coupon">
+                           <span class="input-group-append"> 
+                           <button class="btn btn-primary">Confirmer</button>
+                           </span>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="card">
+               <div class="card-body">
+                  <dl class="dlist-align">
+                     <dt>Prix total:</dt>
+                     <dd class="text-right">59.97€</dd>
+                  </dl>
+                  <dl class="dlist-align">
+                     <dt>Réduction:</dt>
+                     <dd class="text-right text-danger">- 10.00€</dd>
+                  </dl>
+                  <dl class="dlist-align">
+                     <dt>Total:</dt>
+                     <dd class="text-right text-dark b"><strong>49.97€</strong></dd>
+                  </dl>
+                  <hr>
+                  <a href="#" class="btn btn-primary btn-block"> Commander </a>
+                  <a href="#" class="btn btn-light btn-block"> Continuer de regarder</a>
+               </div>
+            </div>
+         </aside>
+      </div>
+   </body>
+</html>
