@@ -4,7 +4,7 @@ const productId = urlParams.get('product_id');
 
 if(productId != null){
     //console.log(queryString);
-    console.log(productId);
+    //console.log(productId);
 }
 
 
@@ -19,18 +19,18 @@ class Product {
     }
 
     DisplayCard(){
-        var cardCode = '<div class="col-lg-2 col-md-6 mb-4 ">'
-                        +'<div class="card h-100">'
-                            +'<a href="pages/view-product.html'+ "?product_id=" + this._id +'"><img class="card-img-top" src="' + this.imageUrl + '" alt="'+ "Ourson " + this.name +'"></a>'
-                            +'<div class="card-body">'
-                                +'<h4 class="card-title">'
-                                    +'<a id="product_name" href="pages/view-product.html'+ "?product_id=" + this._id +'">' + this.name +'</a>'
-                                +'</h4>'
-                                +'<h5>' + this.price + " €" +' </h5>'
-                                +'<p class="card-text">' + this.description + '</p>'
+        var cardCode =  '<div class="col-lg-2 col-md-6 mb-4 ">'
+                            +'<div class="card h-100">'
+                                +'<a href="pages/view-product.html'+ "?product_id=" + this._id +'"><img class="card-img-top" src="' + this.imageUrl + '" alt="'+ "Ourson " + this.name +'"></a>'
+                                +'<div class="card-body">'
+                                    +'<h4 class="card-title">'
+                                        +'<a id="product_name" href="pages/view-product.html'+ "?product_id=" + this._id +'">' + this.name +'</a>'
+                                    +'</h4>'
+                                    +'<h5>' + this.price + " €" +' </h5>'
+                                    +'<p class="card-text">' + this.description + '</p>'
+                                +'</div>'
                             +'</div>'
-                        +'</div>'
-                    +'</div>';
+                        +'</div>';
 
         if(document.getElementById("products") != null){
             var productsDiv = document.getElementById("products");  
@@ -72,7 +72,7 @@ class Product {
                             +'</div>'
                         +'</div>';
 
-        if(document.getElementById('view_product') != null){        
+        if(document.getElementById('view_product') != null){
             var viewProduct = document.getElementById('view_product');
             viewProduct.innerHTML += viewCode;
         }
@@ -145,8 +145,8 @@ request.onreadystatechange = function() {
                     }
                 }
             }
-        }            
-    }    
+        }
+    }
 };
 request.open("GET", "http://localhost:3000/api/teddies");
 request.send();
