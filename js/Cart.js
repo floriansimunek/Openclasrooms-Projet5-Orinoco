@@ -1,14 +1,18 @@
 class Cart{
-    constructor(products){
-        this.products = products;
+    constructor(product){
+        this.product = product;
+        this.viewInCart();
     }
+
     viewInCart(){
-        let cartCode =  '<tr>'
+        console.log(product);
+
+        /*let cartCode =  '<tr>'
                             +'<td>'
                             +'<figure class="itemside align-items-center">'
-                                +'<div class="aside col-lg-6"><img src="' + this.products.imageUrl + '" class="card-img"></div>'
+                                +'<div class="aside col-lg-6"><img src="' + this.product.imageUrl + '" class="card-img"></div>'
                                 +'<figcaption class="info">'
-                                    +'<a href="../pages/view-product.html'+ "?product_id=" + this.products._id +'" class="title text-dark">'+ this.products.name +'</a>'
+                                    +'<a href="../pages/view-product.html'+ "?product_id=" + this.product._id +'" class="title text-dark">'+ this.product.name +'</a>'
                                     +'<p class="text-muted small" id="product_colors">Couleur: rouge, bleu ou marron</p>'
                                 +'</figcaption>'
                             +'</figure>'
@@ -23,26 +27,26 @@ class Cart{
                             +'</td>'
                             +'<td>'
                             +'<div class="price-wrap">' 
-                                +'<span class="price">'+ this.products.price +  "€" + '</br></span>' 
-                                +'<small class="text-muted">' + this.products.price + "€" + '/unité </small>'
+                                +'<span class="price">'+ this.product.price +  "€" + '</br></span>' 
+                                +'<small class="text-muted">' + this.product.price + "€" + '/unité </small>'
                             +'</div>'
                             +'</td>'
                             +'<td class="text-right">' 
-                            +'<a href="" class="btn btn-danger" id="btn_deleteProduct_'+ this.products._id + '">Supprimer</a>'
+                            +'<a href="" class="btn btn-danger" id="btn_deleteProduct_'+ this.product._id + '">Supprimer</a>'
                             +'</td>'
                         +'</tr>';
                         
-        if(localStorage && localStorage.getItem(this.products.name)){
+        if(localStorage && localStorage.getItem(this.product.name)){
             if(document.getElementById('display-cart') != null){
                 let displayCart = document.getElementById('display-cart');
                 displayCart.innerHTML += cartCode;
             }            
-        }
-    }
+        }*/
+    }/*
 
     supprInCart(){
-        if(localStorage && localStorage.getItem(this.products.name)){
-            console.log(this.products.name);
+        if(localStorage && localStorage.getItem(this.product.name)){
+            console.log(this.product.name);
         }      
     }
 
@@ -52,5 +56,5 @@ class Cart{
             emptyCart.classList.add('d-flex', 'justify-content-center');
             emptyCart.innerHTML = '<h2 class="mt-3">Votre panier est vide</h2>';
         }
-    }
+    }*/
 }

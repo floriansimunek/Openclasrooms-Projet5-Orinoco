@@ -3,8 +3,7 @@ const urlParams = new URLSearchParams(queryString);
 const productId = urlParams.get('product_id');
 
 let product = new Product();
-
-
+let cart = new Cart(product);
 
 /*
 fetch('http://localhost:3000/api/teddies')

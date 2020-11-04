@@ -37,68 +37,29 @@ class Product {
             if(this._id === productId){
                 this.displayProduct();
                 this.getProductColors();
+                this.addToCart(this.name, this._id);
             }
         }
     }
     
-    displayCard(){
-        /*let cardCode =  '<div class="col-lg-2 col-md-6 mb-4">'
-                            +'<div class="card h-100">'
-                                +'<a href="pages/view-product.html'+ "?product_id=" + this._id +'"><img class="card-img-top" src="' + this.imageUrl + '" alt="'+ "Ourson " + this.name +'"></a>'
-                                +'<div class="card-body">'
-                                    +'<h4 class="card-title">'
-                                        +'<a id="product_name" href="pages/view-product.html'+ "?product_id=" + this._id +'">' + this.name +'</a>'
-                                    +'</h4>'
-                                    +'<h5>' + this.price + " €" +' </h5>'
-                                    +'<p class="card-text">' + this.description + '</p>'
-                                +'</div>'
-                            +'</div>'
-                        +'</div>';*/
-        
+    displayCard(){       
         let cardCode =  `<div class="col-lg-2 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a id="product_img--link" href=""><img id="product_img" class="card-img-top" src="" alt=""></a>
+                                <a id="product_img--link" href="pages/view-product.html?product_id=${this._id}"><img id="product_img" class="card-img-top" src="${this.imageUrl}" alt="Ourson-  ${this.name}"></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a id="product_name" href=""> </a>
+                                        <a id="product_name" href="pages/view-product.html?product_id=${this._id}">${this.name}</a>
                                     </h4>
-                                    <h5 id="product_price"></h5>
-                                    <p id="product_description" class="card-text"></p>
+                                    <h5 id="product_price">${this.price}€</h5>
+                                    <p id="product_description" class="card-text">${this.description}</p>
                                 </div>
                             </div>
                         </div>`;
         
+        
         if(document.getElementById("products") != null){
             let productsDiv = document.getElementById("products");  
             productsDiv.innerHTML += cardCode;
-        }
-
-
-        if(document.getElementById("product_img--link") != null){
-            let productImageLink = document.getElementById("product_img--link");
-            productImageLink.href = "pages/view-product.html?product_id="+ this._id;
-        }
-
-        if(document.getElementById("product_img") != null){
-            let productImage = document.getElementById("product_img");
-            productImage.src = this.imageUrl;
-            productImage.alt = "Ourson " + this.name;
-        }
-
-        if(document.getElementById("product_name") != null){
-            let productName = document.getElementById("product_name");
-            productName.href = "pages/view-product.html?product_id="+ this._id;
-            productName.innerHTML = this.name;
-        }
-
-        if(document.getElementById("product_price") != null){
-            let productPrice = document.getElementById("product_price");
-            productPrice.innerHTML = this.price + "€";
-        }
-
-        if(document.getElementById("product_description") != null){
-            let productDescription = document.getElementById("product_description");
-            productDescription.innerHTML = this.description;
         }
     }
 
@@ -125,7 +86,7 @@ class Product {
                                         +'</div>'
                                     +'</div>'
                                     +'<div class="mb-3">'
-                                        +'<p class="price h4">' + this.price + ' €</p><br>'
+                                        +'<p class="price h4">' + this.price + '€</p><br>'
                                     +'</div>'
                                     +'<div class="mb-4">'
                                         +'<a href="#" class="btn btn-primary">Acheter</a>'
@@ -154,5 +115,14 @@ class Product {
                                             +'</label>';
             }
         }     
+    }
+
+    addToCart(name, _id){
+        if(document.getElementById('btn_cart') != null){
+            let btnCart = document.getElementById('btn_cart');
+            btnCart.addEventListener('click', function(e){
+                localStorage.setItem(name, _id);
+            });
+        }
     }
 }
