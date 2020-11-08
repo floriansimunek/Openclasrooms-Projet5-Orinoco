@@ -1,52 +1,56 @@
 class Cart{
-    constructor(product){
-        this.product = product;
-        this.viewInCart();
+    constructor(){
+        this.initialize();
+    }
+
+    initialize(){
+        if(document.getElementById("display-cart") != null){
+            this.viewInCart();
+        }
     }
 
     viewInCart(){
-        console.log(product);
+        let productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
 
-        /*let cartCode =  '<tr>'
-                            +'<td>'
-                            +'<figure class="itemside align-items-center">'
-                                +'<div class="aside col-lg-6"><img src="' + this.product.imageUrl + '" class="card-img"></div>'
-                                +'<figcaption class="info">'
-                                    +'<a href="../pages/view-product.html'+ "?product_id=" + this.product._id +'" class="title text-dark">'+ this.product.name +'</a>'
-                                    +'<p class="text-muted small" id="product_colors">Couleur: rouge, bleu ou marron</p>'
-                                +'</figcaption>'
-                            +'</figure>'
-                            +'</td>'
-                            +'<td>'
-                            +'<select class="form-control">'
-                                +'<option>1</option>'
-                                +'<option>2</option>'
-                                +'<option>3</option>'
-                                +'<option>4</option>'
-                            +'</select>'
-                            +'</td>'
-                            +'<td>'
-                            +'<div class="price-wrap">' 
-                                +'<span class="price">'+ this.product.price +  "€" + '</br></span>' 
-                                +'<small class="text-muted">' + this.product.price + "€" + '/unité </small>'
-                            +'</div>'
-                            +'</td>'
-                            +'<td class="text-right">' 
-                            +'<a href="" class="btn btn-danger" id="btn_deleteProduct_'+ this.product._id + '">Supprimer</a>'
-                            +'</td>'
-                        +'</tr>';
-                        
-        if(localStorage && localStorage.getItem(this.product.name)){
-            if(document.getElementById('display-cart') != null){
-                let displayCart = document.getElementById('display-cart');
-                displayCart.innerHTML += cartCode;
-            }            
-        }*/
-    }/*
+        for(let i = 0; i < productsInCart.length; i++){
+            let cartCode =  '<tr>'
+                                +'<td>'
+                                +'<figure class="itemside align-items-center">'
+                                    +'<div class="aside col-lg-6"><img src="' + productsInCart[i].imageUrl + '" class="card-img"></div>'
+                                    +'<figcaption class="info">'
+                                        +'<a href="../pages/view-product.html'+ "?product_id=" + productsInCart[i]._id +'" class="title text-dark">'+ productsInCart[i].name +'</a>'
+                                        +'<p class="text-muted small" id="product_colors">Couleur: '+ productsInCart[i][1] +'</p>'
+                                    +'</figcaption>'
+                                +'</figure>'
+                                +'</td>'
+                                +'<td>'
+                                +'<select class="form-control">'
+                                    +'<option>1</option>'
+                                    +'<option>2</option>'
+                                    +'<option>3</option>'
+                                    +'<option>4</option>'
+                                +'</select>'
+                                +'</td>'
+                                +'<td>'
+                                +'<div class="price-wrap">' 
+                                    +'<span class="price">'+ productsInCart[i].price +  "€" + '</br></span>' 
+                                    +'<small class="text-muted">' + productsInCart[i].price + "€" + '/unité </small>'
+                                +'</div>'
+                                +'</td>'
+                                +'<td class="text-right">' 
+                                +'<a href="" class="btn btn-danger" id="btn_deleteProduct_'+ productsInCart[i][0] + '">Supprimer</a>'
+                                +'</td>'
+                            +'</tr>';
 
-    supprInCart(){
-        if(localStorage && localStorage.getItem(this.product.name)){
-            console.log(this.product.name);
+
+            let displayCart = document.getElementById('display-cart');
+            displayCart.innerHTML += cartCode;   
+        }  
+    }
+
+    /*supprInCart(){
+        if(localStorage && localStorage.getItem(productsInCart.name)){
+            console.log(productsInCart.name);
         }      
     }
 

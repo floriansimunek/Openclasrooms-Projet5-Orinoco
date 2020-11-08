@@ -6,7 +6,6 @@ class Product {
         this.price;
         this.imageUrl;
         this.description;
-        this.products;
         this.initialize();
     }
 
@@ -36,8 +35,9 @@ class Product {
             this.displayCard();
             if(this._id === productId){
                 this.displayProduct();
-                this.getProductColors();
-                this.addToCart(this.name, this._id);
+                if(document.getElementById('btn_cart') != null) {
+                    this.addToCart(this._id, this.colors, this.name);
+                }
             }
         }
     }
@@ -99,6 +99,7 @@ class Product {
         if(document.getElementById('view_product') != null){
             let viewProduct = document.getElementById('view_product');
             viewProduct.innerHTML += viewCode;
+            this.getProductColors();
         }
     }
 
@@ -117,12 +118,29 @@ class Product {
         }     
     }
 
-    addToCart(name, _id){
-        if(document.getElementById('btn_cart') != null){
-            let btnCart = document.getElementById('btn_cart');
-            btnCart.addEventListener('click', function(e){
-                localStorage.setItem(name, _id);
-            });
-        }
+    addToCart(id, colors, name){
+        let btnAddCart = document.getElementById('btn_cart');
+        btnAddCart.addEventListener('click', function(e){
+            e.preventDefault();
+
+            let productArray = [id, colors];
+            let productsInCartArray = [productArray];
+
+            if(localStorage.length === 0){
+                new Cart();
+                localStorage.setItem("productsInCart", JSON.stringify(productsInCartArray));
+                alert(`Le produit ${name} est ajouté à votre panier !`)
+            }else{
+                let productsInCartArray = JSON.parse(localStorage.getItem("productsInCart"));
+
+                if(JSON.stringify(productsInCartArray).indexOf(JSON.stringify(productArray)) === -1){
+                    productsInCartArray.push(productArray);
+                    localStorage.setItem("productsInCart", JSON.stringify(productsInCartArray));
+                    alert(`Le produit ${name} est ajouté à votre panier !`)
+                } else {
+                    alert(`Le produit ${name} est déjà dans votre panier !`);
+                }
+            }
+        });
     }
 }
