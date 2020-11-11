@@ -10,17 +10,14 @@ class Product {
     }
 
     initialize() {
-        let getProducts = async function(){
-            let response  = await fetch('http://localhost:3000/api/teddies');
-            return response.json();
-        }
+        let ajaxResponse = new Ajax('http://localhost:3000/api/teddies');
 
-        getProducts().then(data => {
+        ajaxResponse.getResponse().then(data => {
             product.products = data;
             product.createProduct();
         }).catch(error => {
             console.error(error);
-        })
+        })  
     }
 
     createProduct() {
@@ -109,8 +106,7 @@ class Product {
             let productColors = document.getElementById('product_colors');
 
             for(let y = 0; y < this.colors.length; y++){
-                productColors.innerHTML +=  '</label>'
-                                                +'<label class="js-check btn btn-check">'
+                productColors.innerHTML +=  '<label class="js-check btn btn-check">'
                                                 +'<input type="radio" name="option_size" value="'+ "option"+ y +'">'
                                                 +'<span> ' + this.colors[y] +'</span>'
                                             +'</label>';
