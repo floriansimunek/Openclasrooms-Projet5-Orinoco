@@ -5,6 +5,10 @@ class Ajax{
 
     getResponse = async function(){
         let response  = await fetch(this.url);
-        return response.json();
+        if(response.ok){
+            return response.json();
+        }else{
+            console.error("Error : ", response.status);
+        }        
     }
 }
