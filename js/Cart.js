@@ -2,6 +2,7 @@ class Cart {
     constructor() {
         this.productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
         this.products;    
+        this.totalPrice = 0;
         this.initialize();
     }
 
@@ -15,15 +16,21 @@ class Cart {
                             cart.viewInCart();
 
                         }).then(function(){
-                            cart.viewPrice();
+                            let productQuantityInCart = document.getElementsByClassName("quantityInputs");
+                            let productPriceInCart = document.getElementsByClassName("price");
+                            for(let y = 0; y < productQuantityInCart.length; y++){
+                                productQuantityInCart[y].addEventListener('input', function(e){
+                                    let productPrice = productPriceInCart[y].getAttribute('data-price-price')
+                                    cart.viewPrice(productQuantityInCart, productPrice, y);
+                                })
+                            }  
                         }).then(function(){
                             let btnSupprProductInCart = document.getElementsByClassName("btn_delete");  
                             for (let y = 0; y < btnSupprProductInCart.length; y++) {
                                 btnSupprProductInCart[y].addEventListener('click', function(e){
-                                    e.preventDefault();
-                                    let myProductId = this.getAttribute('data-id');
-                                    let myProductName = this.getAttribute('data-name');
-
+                                    //e.preventDefault();
+                                    let myProductId = this.getAttribute('data-delete-id');
+                                    let myProductName = this.getAttribute('data-delete-name');
                                     cart.deleteProductInCart(myProductId, myProductName, y);
                                 });
                             }
@@ -51,16 +58,16 @@ class Cart {
                             </figure>
                             </td>
                             <td>
-                                <input type="number" id="product_quantity_${cart.products._id}" min="1" max="10" value="1">
+                                <input class="quantityInputs" type="number" id="product_quantity_${cart.products._id}" min="1" max="10" value="1">
                             </td>
                             <td>
                             <div class="price-wrap"> 
-                                <span id="product_price_${cart.products._id}" class="price">${cart.products.price}€</br></span>
+                                <span  class="price" data-price-price="${cart.products.price}" id="product_price_${cart.products._id}">${cart.products.price}€</br></span>
                                 <small class="text-muted">${cart.products.price}€/unité </small>
                             </div>
                             </td>
                             <td class="text-right">
-                            <a href="" class="btn btn-danger btn_delete" data-id="${cart.products._id}" data-name="${cart.products.name}">Supprimer</a>
+                            <a href="" class="btn btn-danger btn_delete" data-delete-id="${cart.products._id}" data-delete-name="${cart.products.name}">Supprimer</a>
                             </td>
                         </tr>`;
 
@@ -70,8 +77,8 @@ class Cart {
         }
     }
 
-    viewPrice(){
-        let totalPrice = 0;
+    viewPrice(quantity, price, y){
+        /*let totalPrice = 0;
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
             let totalProductsPrice = document.getElementById("total_price");
             let finalProductsPrice = document.getElementById("final_price");
@@ -83,30 +90,36 @@ class Cart {
                         productQuantity.addEventListener('input', function(e){
                             e.preventDefault();
                             let productPrice = cart.products.price;
-                            productQuantity = document.getElementById('product_quantity_' + cart.productsInCart[y][0]).value;
-                            productQuantity = parseInt(productQuantity);
-                            productPrice *= productQuantity;
-                            
-                            let displayedProductPrice = document.getElementById('product_price_' + cart.productsInCart[y][0]);
-                            displayedProductPrice.innerText = productPrice + "€";
-                            displayedProductPrice = document.getElementById('product_price_' + cart.productsInCart[y][0]).textContent;
-                            displayedProductPrice = displayedProductPrice.replace('€', '');
-                            displayedProductPrice = parseInt(displayedProductPrice);
-                            
-                            totalPrice += displayedProductPrice;
-                            console.log(totalPrice);
-
-
-                            let priceReduction = document.getElementById("reduction_price").textContent;
-                            priceReduction = priceReduction.replace('€', '').replace('-', '');
-                            totalProductsPrice.innerText = totalPrice + "€";
-                            totalPrice -= priceReduction;
-                            finalProductsPrice.innerHTML = "<strong>"+ totalPrice +"€</strong>";
+                            console.log(productPrice);
                         })
                     }
                 }
             }
-        }     
+        }*/
+        /*let productPriceInCart = document.getElementsByClassName("price");
+        productPriceInCart = productPriceInCart[y].textContent.replace('€', '');
+        console.log(productPriceInCart)
+
+        let displayedProductPrice = document.getElementById('product_price_' + cart.productsInCart[y][0]);
+        console.log(displayedProductPrice)
+
+        displayedProductPrice.innerText = JSON.stringify(productPriceInCart * quantity[y].value);*/
+        if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
+            let totalProductsPrice = document.getElementById("total_price");
+            let finalProductsPrice = document.getElementById("final_price");
+
+            let productPrice = price * quantity[y].value;
+
+            let displayedProductPrice = document.getElementById('product_price_' + cart.productsInCart[y][0]);
+            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";
+
+            this.totalPrice = productPrice;
+            totalProductsPrice.innerText = this.totalPrice + "€";
+            console.log(this.totalPrice)            
+        }
+
+
+
     }
 
     displayEmptyCart(){
