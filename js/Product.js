@@ -117,7 +117,7 @@ class Product {
     addToCart(id, name){
         let btnAddCart = document.getElementById('btn_cart');
         btnAddCart.addEventListener('click', function(e){
-            e.preventDefault();
+            //e.preventDefault();
 
             let productArray = [id];
             let productsInCartArray = [productArray];
@@ -136,6 +136,32 @@ class Product {
                     alert(`Le produit ${name} est déjà dans votre panier !`);
                 }
             }
+
+            /*let allProducts = {};
+            allProducts[id] = {
+                id: id,
+                quantity: quantity
+            }*/
+
+            /*let productsInCart = {};
+            let product = {
+                quantity: "test"
+            }
+
+            if(localStorage.length === 0){
+                productsInCart[id] = product;
+                localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
+                alert(`Le produit ${name} est ajouté à votre panier !`);
+            }else{
+                let productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
+                if (id in productsInCart){
+                    alert(`Le produit ${name} est déjà dans votre panier !`);
+                } else {
+                    productsInCart[id] = product;
+                    localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
+                    alert(`Le produit ${name} est ajouté à votre panier !`);
+                }
+            }*/          
         });
     }
 }
