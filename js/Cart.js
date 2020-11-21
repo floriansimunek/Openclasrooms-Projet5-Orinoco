@@ -1,7 +1,7 @@
 class Cart {
     constructor() {
         this.productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
-        this.products;    
+        this.products;
         this.totalPrice = 0;
         this.initialize();
     }
@@ -102,24 +102,19 @@ class Cart {
 
         let displayedProductPrice = document.getElementById('product_price_' + cart.productsInCart[y][0]);
         console.log(displayedProductPrice)
-
+        
         displayedProductPrice.innerText = JSON.stringify(productPriceInCart * quantity[y].value);*/
+        
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
+            
             let totalProductsPrice = document.getElementById("total_price");
             let finalProductsPrice = document.getElementById("final_price");
 
             let productPrice = price * quantity[y].value;
-
-            let displayedProductPrice = document.getElementById('product_price_' + cart.productsInCart[y][0]);
-            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";
-
-            this.totalPrice = productPrice;
-            totalProductsPrice.innerText = this.totalPrice + "€";
-            console.log(this.totalPrice)            
+            
+            let displayedProductPrice = document.getElementById('product_price_' + this.productsInCart[y][0]);
+            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";  
         }
-
-
-
     }
 
     displayEmptyCart(){

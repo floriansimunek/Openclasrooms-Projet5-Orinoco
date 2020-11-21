@@ -15,6 +15,8 @@ class Product {
         ajaxResponse.getResponse().then(data => {
             product.products = data;
             product.createProduct();
+            product.createProduct();
+            product.createProduct();
         }).catch(error => {
             console.error(error);
         })  
