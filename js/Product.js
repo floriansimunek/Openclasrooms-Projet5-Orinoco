@@ -15,8 +15,8 @@ class Product {
         ajaxResponse.getResponse().then(data => {
             product.products = data;
             product.createProduct();
-            product.createProduct();
-            product.createProduct();
+            //product.createProduct();
+            //product.createProduct();
         }).catch(error => {
             console.error(error);
         })  
@@ -44,7 +44,7 @@ class Product {
     displayCard(){       
         let cardCode =  `<div class="col-lg-2 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a id="product_img--link" href="pages/view-product.html?product_id=${this._id}"><img id="product_img" class="card-img-top" src="${this.imageUrl}" alt="Ourson-  ${this.name}"></a>
+                                <a id="product_img--link" href="pages/view-product.html?product_id=${this._id}"><img id="product_img" class="card-img-top" src="${this.imageUrl}" alt="Ourson ${this.name}"></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a id="product_name" href="pages/view-product.html?product_id=${this._id}">${this.name}</a>

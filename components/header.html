@@ -1,40 +1,63 @@
-<header>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
 
-    <nav class="navbar navbar-expand-lg navbar-dark black">
-        <div class="container">
-            <a class="navbar-brand" href="#"><strong>Navbar</strong></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
-                    </li>
-                </ul>
-            </div>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <a class="navbar-brand" href="index.html">Accueil</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/cart.html">Panier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/achat.html">Commandes</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Rechercher un article" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+            </form>
         </div>
     </nav>
 
-    <div class="view intro-2">
-        <div class="full-bg-img">
-            <div class="mask rgba-black-strong flex-center">
-                <div class="container">
-                    <div class="white-text text-center wow fadeInUp">
-                        <h2>This Navbar isn't fixed</h2>
-                        <h5>When you scroll down it will disappear</h5>
-                        <br>
-                        <p>Full page intro with background image will be always displayed in full screen mode, regardless of device </p>
-                    </div>
-                </div>
-            </div>
+    <div class="image-banner">
+        <div class="container text-white text-center">
+            <img id="logo" src="../images/teddy.webp" alt="Orinoco Logo">
+            <h2 class="display-2">Bienvenue sur le site Orinoco</h2>
+            <h3 class="font-weight-normal">Vous trouverez ici toute une collection d'ourson en peluche</h5>
         </div>
     </div>
 
-</header>
+
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <a id="product_img--link" href=""><img id="product_img" class="card-img-top" src="../images/teddy_1.jpg" alt="Ourson"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a id="product_name" href="">Norbert</a>
+                            </h4>
+                            <h5 id="product_price">2900€</h5>
+                            <p id="product_description" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        </div>
+                    </div>
+                </div>    
+
+</body>
+</html>
+
