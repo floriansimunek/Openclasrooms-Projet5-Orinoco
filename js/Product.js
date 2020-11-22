@@ -51,7 +51,7 @@ class Product {
                                     </h4>
                                     <h5 id="product_price">${this.price}€</h5>
                                     <p id="product_description" class="card-text">${this.description}</p>
-                                    <a href="#" class="btn btn-success">Ajouter au panier</a>
+                                    <a href="pages/view-product.html?product_id=${this._id}" class="btn btn-success">Voir le produit</a>
                                 </div>
                             </div>
                         </div>`;

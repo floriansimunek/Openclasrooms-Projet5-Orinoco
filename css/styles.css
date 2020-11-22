@@ -5,12 +5,22 @@
     border-radius: 5px;
 }*/
 /* PRODUCTS CARDS */
-.card-img-top {
+.product-card {
+  transition: transform 0.5s ease;
+}
+.product-card:hover {
+  transform: scale(1.05);
+}
+.product-card .card-img-top {
   object-fit: cover;
   height: 175px;
   border-radius: 2% 2% 0% 0%;
+  transition: all 0.5s ease;
 }
-.card-body {
+.product-card .card-img-top:hover {
+  opacity: 0.8;
+}
+.product-card-body {
   border-radius: 0% 0% 2% 2%;
 }
 
