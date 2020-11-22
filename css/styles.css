@@ -3,6 +3,10 @@ body {
   background-repeat: repeat;
 }
 
+.form-control {
+  width: 500px !important;
+}
+
 /* PRODUCTS CARDS */
 .product-card {
   transition: transform 0.5s ease;
@@ -17,7 +21,7 @@ body {
   transition: all 0.5s ease;
 }
 .product-card .card-img-top:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 .product-card-body {
   border-radius: 0% 0% 2% 2%;
@@ -34,6 +38,16 @@ body {
 }
 .image-banner #logo {
   filter: hue-rotate(-135deg);
+}
+@media screen and (max-width: 960px) {
+  .image-banner #logo {
+    display: none;
+  }
+}
+@media screen and (max-width: 720px) {
+  .image-banner {
+    display: none;
+  }
 }
 
 html, body, header {

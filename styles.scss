@@ -3,6 +3,10 @@ body{
     background-repeat: repeat;
 }
 
+.form-control{
+    width: 500px !important;
+}
+
 /* PRODUCTS CARDS */
 .product-card{
     transition: transform 0.5s ease;
@@ -17,7 +21,7 @@ body{
             border-radius: 2% 2% 0% 0%;
             transition: all 0.5s ease;
             &:hover{
-                opacity: 0.8;
+                opacity: 0.7;
             }
         }
     }
@@ -37,6 +41,12 @@ body{
     filter: hue-rotate(135deg);
     #logo{
         filter: hue-rotate(-135deg);
+        @media screen and (max-width: 960px){
+            display:none;
+        }
+    }
+    @media screen and (max-width: 720px){
+        display:none;
     }
 }
 
