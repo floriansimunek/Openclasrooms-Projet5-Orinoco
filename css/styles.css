@@ -1,18 +1,17 @@
-.navbar-nav {
-  display: flex;
-  align-items: center;
-}
-
-.confirm_btn {
-  width: 100%;
-  font-weight: bold !important;
-  text-transform: uppercase;
-  border-radius: 5px;
-}
-
+/*.confirm_btn{
+    width: 100%;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    border-radius: 5px;
+}*/
+/* PRODUCTS CARDS */
 .card-img-top {
   object-fit: cover;
   height: 175px;
+  border-radius: 2% 2% 0% 0%;
+}
+.card-body {
+  border-radius: 0% 0% 2% 2%;
 }
 
 /* HEADER */
@@ -37,6 +36,11 @@ html, body, header {
   text-align: center;
   width: 80px;
   border-radius: 50%;
+  opacity: 0.8;
+  transition: all 1s ease;
+}
+.footer-icons .fa:hover {
+  opacity: 1;
 }
 .footer-icons .fa-facebook {
   background: #3B5998;

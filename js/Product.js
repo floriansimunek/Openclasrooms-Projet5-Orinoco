@@ -42,15 +42,16 @@ class Product {
     }
     
     displayCard(){       
-        let cardCode =  `<div class="col-lg-2 col-md-6 mb-4">
+        let cardCode = `<div class="col-lg-2 col-md-6 mb-4 product-card">
                             <div class="card h-100">
-                                <a id="product_img--link" href="pages/view-product.html?product_id=${this._id}"><img id="product_img" class="card-img-top" src="${this.imageUrl}" alt="Ourson ${this.name}"></a>
+                                <a id="" href="pages/view-product.html?product_id=${this._id}"><img id="product_img" class="card-img-top" src="${this.imageUrl}" alt="Ourson ${this.name}"></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a id="product_name" href="pages/view-product.html?product_id=${this._id}">${this.name}</a>
+                                        <a id="product_name" class="text-info" href="pages/view-product.html?product_id=${this._id}"">${this.name}</a>
                                     </h4>
                                     <h5 id="product_price">${this.price}€</h5>
                                     <p id="product_description" class="card-text">${this.description}</p>
+                                    <a href="#" class="btn btn-success">Ajouter au panier</a>
                                 </div>
                             </div>
                         </div>`;
