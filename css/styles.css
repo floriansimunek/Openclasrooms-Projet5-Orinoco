@@ -1,9 +1,8 @@
-/*.confirm_btn{
-    width: 100%;
-    font-weight: bold !important;
-    text-transform: uppercase;
-    border-radius: 5px;
-}*/
+body {
+  background-image: url(../images/800px_COLOURBOX25038287.jpg);
+  background-repeat: repeat;
+}
+
 /* PRODUCTS CARDS */
 .product-card {
   transition: transform 0.5s ease;
@@ -31,7 +30,10 @@
   background-position: bottom;
   background-size: cover;
   height: 50%;
-  filter: hue-rotate(105deg);
+  filter: hue-rotate(135deg);
+}
+.image-banner #logo {
+  filter: hue-rotate(-135deg);
 }
 
 html, body, header {
@@ -70,12 +72,12 @@ html, body, header {
   color: #55ACEE;
   background: white;
 }
-.footer-icons .fa-youtube {
+.footer-icons .fa-youtube-play {
   background: #bb0000;
   color: white;
   transition: all 0.5s ease;
 }
-.footer-icons .fa-youtube:hover {
+.footer-icons .fa-youtube-play:hover {
   color: #bb0000;
   background: white;
 }

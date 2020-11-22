@@ -31,8 +31,17 @@
                 <li class="nav-item">
                     <a class="nav-link text-info" href="pages/cart.html">Panier</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-info" href="pages/achat.html">Commandes</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Commandes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="pages/achat.html">En cours</a>
+                        <a class="dropdown-item" href="#">Historique</a>
+                        <a class="dropdown-item" href="#">Transactions</a>
+                        <a class="dropdown-item" href="#">Retours et Remboursements</a>
+                        <a class="dropdown-item" href="#">Commandes reçues</a>
+                    </div>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -50,16 +59,12 @@
         </div>
     </div>
 
+    <div class="bg-info py-2"></div>
+
     <div class="container-fluid">
         <div class="row mt-5">
             <aside class="col-lg-2 col-md-4 mb-5">
-                <ul class="list-group">
-                    <a class="list-group-item active" href="#">Historique</a>
-                    <a class="list-group-item" href="#">Transactions</a>
-                    <a class="list-group-item" href="#">Retours et Remboursement</a>
-                    <a class="list-group-item" href="#">Paramètres</a>
-                    <a class="list-group-item" href="#">Commandes reçues</a>
-                </ul>
+
             </aside>
             <div class="col-lg-10 col-md-8">
                 <div id="products" class="row justify-content-center">
@@ -73,7 +78,7 @@
             <div class="md-5 container d-flex justify-content-center">
                 <a href="#" class="fa fa-facebook mx-2"></a>
                 <a href="#" class="fa fa-twitter mx-2"></a>
-                <a href="#" class="fa fa-youtube mx-2"></a>
+                <a href="#" class="fa fa-youtube-play mx-2"></a>
                 <a href="#" class="fa fa-snapchat-ghost mx-2"></a>
                 <a href="#" class="fa fa-linkedin mx-2"></a>
             </div>

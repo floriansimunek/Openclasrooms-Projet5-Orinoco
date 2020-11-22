@@ -1,9 +1,7 @@
-/*.confirm_btn{
-    width: 100%;
-    font-weight: bold !important;
-    text-transform: uppercase;
-    border-radius: 5px;
-}*/
+body{
+    background-image: url(../images/800px_COLOURBOX25038287.jpg);
+    background-repeat: repeat;
+}
 
 /* PRODUCTS CARDS */
 .product-card{
@@ -36,8 +34,10 @@
     background-position: bottom;
     background-size: cover;
     height: 50%;
-
-    filter: hue-rotate(105deg);
+    filter: hue-rotate(135deg);
+    #logo{
+        filter: hue-rotate(-135deg);
+    }
 }
 
 html, body, header{
@@ -79,7 +79,7 @@ html, body, header{
             }
         }
 
-        &-youtube{
+        &-youtube-play{
             background: #bb0000;
             color: white;
             transition: all 0.5s ease;

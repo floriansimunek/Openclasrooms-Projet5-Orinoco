@@ -15,8 +15,7 @@ class Product {
         ajaxResponse.getResponse().then(data => {
             product.products = data;
             product.createProduct();
-            //product.createProduct();
-            //product.createProduct();
+            //product.createProduct();product.createProduct();product.createProduct();product.createProduct();product.createProduct();
         }).catch(error => {
             console.error(error);
         })  
@@ -51,7 +50,8 @@ class Product {
                                     </h4>
                                     <h5 id="product_price">${this.price}€</h5>
                                     <p id="product_description" class="card-text">${this.description}</p>
-                                    <a href="pages/view-product.html?product_id=${this._id}" class="btn btn-success">Voir le produit</a>
+                                    <hr>
+                                    <a href="pages/view-product.html?product_id=${this._id}" class="btn btn-success col-lg-8 d-flex mx-auto">Voir le produit</a>
                                 </div>
                             </div>
                         </div>`;
