@@ -11,4 +11,8 @@ class Ajax{
             console.error("Error : ", response.status);
         }        
     }
+
+    sendData = async function(){
+        let message = await fetch(this.url);
+    }
 }

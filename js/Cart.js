@@ -20,7 +20,7 @@ class Cart {
                             let productPriceInCart = document.getElementsByClassName("price");
                             for(let y = 0; y < productQuantityInCart.length; y++){
                                 productQuantityInCart[y].addEventListener('input', function(e){
-                                    let productPrice = productPriceInCart[y].getAttribute('data-price-price')
+                                    let productPrice = productPriceInCart[y].getAttribute('data-price-price');
                                     cart.viewPrice(productQuantityInCart, productPrice, y);
                                 })
                             }  
@@ -28,11 +28,14 @@ class Cart {
                             let btnSupprProductInCart = document.getElementsByClassName("btn_delete");  
                             for (let y = 0; y < btnSupprProductInCart.length; y++) {
                                 btnSupprProductInCart[y].addEventListener('click', function(e){
-                                    //e.preventDefault();
                                     let myProductId = this.getAttribute('data-delete-id');
                                     let myProductName = this.getAttribute('data-delete-name');
                                     cart.deleteProductInCart(myProductId, myProductName, y);
                                 });
+                            }
+                        }).then(function(){
+                            if(document.getElementById("btn_purshase") != null){
+                                cart.purshaseCart();
                             }
                         })
                         .catch(error => {
@@ -111,9 +114,11 @@ class Cart {
             let finalProductsPrice = document.getElementById("final_price");
 
             let productPrice = price * quantity[y].value;
+            this.totalPrice += productPrice;
             
             let displayedProductPrice = document.getElementById('product_price_' + this.productsInCart[y][0]);
             displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";  
+            console.log(this.totalPrice);
         }
     }
 
@@ -129,5 +134,19 @@ class Cart {
             localStorage.setItem("productsInCart", JSON.stringify(cart.productsInCart));
         }
         alert(`Le produit ${name} est supprimé de votre panier`);
+    }
+
+    ////////////////////////////////////////ORDER///////////////////////////////////////////////////
+    purshaseCart(){
+        let btnPurshase = document.getElementById("btn_purshase");
+        btnPurshase.addEventListener('click', function(e){
+            //e.preventDefault();
+            let formInputs = document.getElementsByClassName("contact-input");
+            for(let i = 0; i < formInputs.length; i++){
+                //localStorage.setItem(formInputs[i].name, formInputs[i].value);
+                let contactInputsValues = formInputs[i].value;
+                console.log(contactInputsValues)
+            }
+        })
     }
 }

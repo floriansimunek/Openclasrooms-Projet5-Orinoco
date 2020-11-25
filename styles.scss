@@ -1,12 +1,8 @@
 body{
     background-image: url(../images/800px_COLOURBOX25038287.jpg);
+    object-fit: contain;
     background-repeat: repeat;
 }
-
-.form-control{
-    width: 500px !important;
-}
-
 /* PRODUCTS CARDS */
 .product-card{
     transition: transform 0.5s ease;
@@ -56,14 +52,24 @@ html, body, header{
 
 /* FOOTER (ICONS) */
 .footer-icons{
+    @media screen and (max-width: 600px){
+        &-block{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            .fa{
+                margin-top: 10px;
+            }
+        }        
+    }
     .fa {
-        text-decoration: none;
-        font-size: 40px;
-        padding: 20px;
-        text-align: center;
         width: 80px;
-        border-radius: 50%;
+        height: 80px;
+        line-height: 80px;
+        font-size: 40px;
+        text-align: center;
         opacity: 0.8;
+        border-radius: 50%;
         transition: all 1s ease;
         &:hover{
             opacity: 1;
@@ -72,7 +78,7 @@ html, body, header{
         &-facebook {
             background: #3B5998;
             color: white;
-            transition: all 0.5s ease;
+            transition: all 1s ease;
             &:hover{
                 color: #3B5998;
                 background: white;
@@ -82,7 +88,7 @@ html, body, header{
         &-twitter {
             background: #55ACEE;
             color: white;
-            transition: all 0.5s ease;
+            transition: all 1s ease;
             &:hover{
                 color: #55ACEE;
                 background: white;
@@ -92,7 +98,7 @@ html, body, header{
         &-youtube-play{
             background: #bb0000;
             color: white;
-            transition: all 0.5s ease;
+            transition: all 1s ease;
             &:hover{
                 color: #bb0000;
                 background: white;
@@ -103,7 +109,7 @@ html, body, header{
             background: #fffc00;
             color: white;
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-            transition: all 0.5s ease;
+            transition: all 1s ease;
             &:hover{
                 color:#fffc00;
                 background: white;
@@ -113,7 +119,7 @@ html, body, header{
         &-linkedin{
             background: #007bb5;
             color: white;
-            transition: all 0.5s ease;
+            transition: all 1s ease;
             &:hover{
                 color: #007bb5;
                 background: white;

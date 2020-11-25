@@ -1,10 +1,7 @@
 body {
   background-image: url(../images/800px_COLOURBOX25038287.jpg);
+  object-fit: contain;
   background-repeat: repeat;
-}
-
-.form-control {
-  width: 500px !important;
 }
 
 /* PRODUCTS CARDS */
@@ -55,14 +52,24 @@ html, body, header {
 }
 
 /* FOOTER (ICONS) */
+@media screen and (max-width: 600px) {
+  .footer-icons-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-icons-block .fa {
+    margin-top: 10px;
+  }
+}
 .footer-icons .fa {
-  text-decoration: none;
-  font-size: 40px;
-  padding: 20px;
-  text-align: center;
   width: 80px;
-  border-radius: 50%;
+  height: 80px;
+  line-height: 80px;
+  font-size: 40px;
+  text-align: center;
   opacity: 0.8;
+  border-radius: 50%;
   transition: all 1s ease;
 }
 .footer-icons .fa:hover {
@@ -71,7 +78,7 @@ html, body, header {
 .footer-icons .fa-facebook {
   background: #3B5998;
   color: white;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 .footer-icons .fa-facebook:hover {
   color: #3B5998;
@@ -80,7 +87,7 @@ html, body, header {
 .footer-icons .fa-twitter {
   background: #55ACEE;
   color: white;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 .footer-icons .fa-twitter:hover {
   color: #55ACEE;
@@ -89,7 +96,7 @@ html, body, header {
 .footer-icons .fa-youtube-play {
   background: #bb0000;
   color: white;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 .footer-icons .fa-youtube-play:hover {
   color: #bb0000;
@@ -99,7 +106,7 @@ html, body, header {
   background: #fffc00;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 .footer-icons .fa-snapchat-ghost:hover {
   color: #fffc00;
@@ -108,7 +115,7 @@ html, body, header {
 .footer-icons .fa-linkedin {
   background: #007bb5;
   color: white;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 .footer-icons .fa-linkedin:hover {
   color: #007bb5;
