@@ -56,11 +56,10 @@ class Product {
                             <div class="card h-100">
                                 <a id="" href="pages/view-product.html?product_id=${this._id}"><img id="product_img" class="card-img-top" src="${this.imageUrl}" alt="Ourson ${this.name}"></a>
                                 <div class="card-body">
-                                    <h4 class="card-title">
+                                    <h4 class="card-title d-flex justify-content-center">
                                         <a id="product_name" class="text-info" href="pages/view-product.html?product_id=${this._id}"">${this.name}</a>
                                     </h4>
-                                    <h5 id="product_price">${this.price}€</h5>
-                                    <p id="product_description" class="card-text">${this.description}</p>
+                                    <h5 id="product_price" class="d-flex justify-content-center">${this.price}€</h5>
                                     <hr>
                                     <a href="pages/view-product.html?product_id=${this._id}" class="btn btn-info col-lg-8 d-flex mx-auto">Voir le produit</a>
                                 </div>
@@ -78,10 +77,10 @@ class Product {
     displayProduct(){
         //Code HTML de la card de chaque produit avec Bootstrap
         let viewCode =  `<div class="row">
-                            <aside class="col-lg-8 mb-4 mt-4">
+                            <aside class="col-lg-8">
                                 <article class="gallery-wrap">
-                                    <div class="card img-big-wrap">
-                                        <a href="#"> <img class="card-img" src="${this.imageUrl}"></a>
+                                    <div class="img-big-wrap">
+                                        <a href="#"><img class="card-img" src="${this.imageUrl}"></a>
                                     </div>
                                 </article>
                             </aside>
@@ -98,14 +97,14 @@ class Product {
                                     </div>
                                     <div class="form-group">
                                         <label class="text-muted">Quantité</label><br>
-                                        <input class="productQuantityInput" type="number" id="product_quantity_${this._id}" min="1" max="10" value="1">
+                                        <input class="form-control col-4 productQuantityInput" type="number" id="product_quantity_${this._id}" min="1" max="10" value="1">
                                     </div>
                                     <div class="mb-3">
                                         <p class="price h4">${this.price}€</p><br>
                                     </div>
                                     <div class="mb-4">
                                         <a href="#" class="btn btn-primary">Acheter</a>
-                                        <a href="cart.html" id="btn_cart" class="btn btn-light">Ajouter au panier</a>
+                                        <a href="cart.html" id="btn_cart" class="btn btn-secondary">Ajouter au panier</a>
                                     </div>
                                 </article>
                             </div>
@@ -128,9 +127,9 @@ class Product {
             //On récupère toutes les couleurs de chaque produit que l'on affiche
             for(let y = 0; y < this.colors.length; y++){
                 //Code HTML pour les couleurs (boutons radios selectionnables)
-                productColors.innerHTML +=  `<label class="js-check btn btn-check">
+                productColors.innerHTML +=  `<label class="form-check-inline">
                                                 <input type="radio" name="option_size" value="option${y}">
-                                                <span>${this.colors[y]}</span>
+                                                <span class="ml-1">${this.colors[y]}</span>
                                             </label>`;
             }
         }     

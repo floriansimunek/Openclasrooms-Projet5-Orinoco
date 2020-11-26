@@ -4,31 +4,11 @@ body {
   background-repeat: repeat;
 }
 
-/* PRODUCTS CARDS */
-.product-card {
-  transition: transform 0.5s ease;
-}
-.product-card:hover {
-  transform: scale(1.05);
-}
-.product-card .card-img-top {
-  object-fit: cover;
-  height: 175px;
-  border-radius: 2% 2% 0% 0%;
-  transition: all 0.5s ease;
-}
-.product-card .card-img-top:hover {
-  opacity: 0.7;
-}
-.product-card-body {
-  border-radius: 0% 0% 2% 2%;
-}
-
 /* HEADER */
 .image-banner {
   background-image: url(../images/teddy-bear_banner.webp);
   background-attachment: fixed;
-  background-position: bottom;
+  background-position: center;
   background-size: cover;
   height: 50%;
   filter: hue-rotate(135deg);
@@ -47,6 +27,12 @@ body {
   }
 }
 
+@media screen and (max-width: 720px) {
+  .form-inline {
+    display: none !important;
+  }
+}
+
 html, body, header {
   height: 100%;
 }
@@ -59,7 +45,7 @@ html, body, header {
     align-items: center;
   }
   .footer-icons-block .fa {
-    margin-top: 10px;
+    margin-top: 15px;
   }
 }
 .footer-icons .fa {
@@ -121,6 +107,31 @@ html, body, header {
 .footer-icons .fa-linkedin:hover {
   color: #007bb5;
   background: white;
+}
+
+/* index.html PRODUCTS CARDS */
+.product-card {
+  transition: transform 0.5s ease;
+}
+.product-card:hover {
+  transform: scale(1.05);
+}
+.product-card .card-img-top {
+  object-fit: cover;
+  height: 175px;
+  border-radius: 2% 2% 0% 0%;
+  transition: all 0.5s ease;
+}
+.product-card .card-img-top:hover {
+  opacity: 0.7;
+}
+.product-card-body {
+  border-radius: 0% 0% 2% 2%;
+}
+
+/* view.product.html PRODUCT CARD */
+.productQuantityInput {
+  text-align: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

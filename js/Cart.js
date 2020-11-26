@@ -17,8 +17,8 @@ class Cart {
                         //Méthode getResponse() qui permet de récuperer les datas des teddies du panier
                         ajaxResponse.getResponse().then(data => {
                             cart.product = data;
+                        }).then(function(){
                             cart.viewInCart(i);
-
                         }).then(function(){
                             //Partie qui nous permet d'afficher le prix des produits présent dans le panier après avoir afficher ces derniers
                             let productQuantityInCart = document.getElementsByClassName("quantityInputs");
@@ -44,6 +44,8 @@ class Cart {
                                     cart.deleteProductInCart(myProductId, myProductName, y);
                                 });
                             }
+                        }).then(function(){
+                            cart.emptyCart();
                         })
                         .catch(error => {
                             //Récupération des messages d'erreurs en cas de problèmes(s)
@@ -63,25 +65,25 @@ class Cart {
         //Code HTML permettant d'afficher chaque produit individuellement avec Bootstrap
         let cartCode =  `<tr>
                             <td>
-                            <figure class="itemside align-items-center">
-                                <div class="aside col-lg-6"><img src="${cart.product.imageUrl}" class="card-img"></div>
-                                <figcaption class="info">
-                                    <a href="../pages/view-product.html?product_id="${cart.product._id}" class="title text-dark">${cart.product.name}</a>
-                                    <p class="text-muted small" id="product_colors">Couleur: ${cart.product.colors}</p>
-                                </figcaption>
-                            </figure>
+                                <figure class="itemside align-items-center">
+                                    <div class="aside col-lg-6"><a href="../pages/view-product.html?product_id=${cart.product._id}"><img src="${cart.product.imageUrl}" class="card-img"></a></div>
+                                    <figcaption class="info ml-3 mt-3">
+                                        <a href="../pages/view-product.html?product_id=${cart.product._id}" class="text-primary h3">${cart.product.name}</a>
+                                        <p class="text-muted" id="product_colors">Couleurs: ${cart.product.colors}</p>
+                                    </figcaption>
+                                </figure>
                             </td>
                             <td>
-                                <input class="quantityInputs" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
+                                <input class="quantityInputs form-control" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
                             </td>
                             <td>
-                            <div class="price-wrap"> 
-                                <span  class="price" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">${cart.product.price}€</br></span>
-                                <small class="text-muted">${cart.product.price}€/unité </small>
-                            </div>
+                                <div class="price-wrap"> 
+                                    <span  class="price" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">${cart.product.price}€</br></span>
+                                    <small class="text-muted">${cart.product.price}€/unité </small>
+                                </div>
                             </td>
-                            <td class="text-right">
-                            <a href="" class="btn btn-danger btn_delete" data-delete-id="${cart.product._id}" data-delete-name="${cart.product.name}">Supprimer</a>
+                                <td class="text-right">
+                                <a href="" class="btn btn-danger btn_delete" data-delete-id="${cart.product._id}" data-delete-name="${cart.product.name}">Supprimer</a>
                             </td>
                         </tr>`;
 
@@ -105,16 +107,16 @@ class Cart {
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
             //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
             let productPrice = price * quantity[y].value;
-            console.log(productPrice);
+            //console.log(productPrice);
             //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
             let displayedProductPrice = document.getElementById('product_price_' + this.productsInCart[y][0]);
             displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            let totalPriceDisplay = document.getElementById('total_price');
-            this.totalPrice += productPrice;
-            totalPriceDisplay.innerText = this.totalPrice + "€";
+            let totalProductsPrice = document.getElementById("total_price");
+            let finalProductsPrice = document.getElementById("final_price");
             
+            this.totalPrice += productPrice;
+            totalProductsPrice.innerText = this.totalPrice + "€";
         }
     }
 
@@ -132,5 +134,15 @@ class Cart {
             localStorage.setItem("productsInCart", JSON.stringify(cart.productsInCart));
         }
         alert(`Le produit ${name} est supprimé de votre panier`);
+    }
+
+    //Méthode qui permet de vider le panier
+    emptyCart(){
+       if(document.getElementById('btn_SupprAll') != null){
+           let deleteAll = document.getElementById('btn_SupprAll');
+           deleteAll.addEventListener('click', function(){
+               localStorage.setItem('productsInCart', '[]');
+           })
+       } 
     }
 }
