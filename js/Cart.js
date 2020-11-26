@@ -2,7 +2,7 @@ class Cart {
     //Constructor de la class qui nous permet de récupérer les produits dans le panier (localStorage)
     constructor() {
         this.productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
-        this.products;
+        this.product;
         this.totalPrice = 0;
         this.initialize();
     }
@@ -16,7 +16,7 @@ class Cart {
 
                         //Méthode getResponse() qui permet de récuperer les datas des teddies du panier
                         ajaxResponse.getResponse().then(data => {
-                            cart.products = data;
+                            cart.product = data;
                             cart.viewInCart(i);
 
                         }).then(function(){
@@ -26,8 +26,12 @@ class Cart {
                             //On boucle sur le nombre de produits dans le panier pour afficher les prix de tous les produits présents dans le panier uniquement
                             for(let y = 0; y < productQuantityInCart.length; y++){
                                 let productPrice = productPriceInCart[y].getAttribute('data-price-price');
-                                cart.modifyPrice(productQuantityInCart, productPrice, y);
+                                //On affiche le prix des produits multiplié par leurs quantité
+                                cart.viewPrice(productQuantityInCart, productPrice, y);
                                 productQuantityInCart[y].addEventListener('input', function(e){
+                                    cart.modifyQuantity(productQuantityInCart, y);
+                                    //La quantité du produit est changé par l'utilisateur donc on le réaffiche à chaque changements
+                                    cart.viewPrice(productQuantityInCart, productPrice, y);
                                 })
                             }  
                         }).then(function(){
@@ -49,7 +53,7 @@ class Cart {
         }
 
         //On signale à l'utilisateur, par un message, que son panier est vide si le localStorage est vide
-        if(document.getElementById('empty-cart') && localStorage.productsInCart === '[]' || localStorage.length === 0){
+        if(document.getElementById('empty-cart') && localStorage.productsInCart === '[]' ||document.getElementById('empty-cart') && localStorage.length === 0){
             this.displayEmptyCart();
         }      
     }
@@ -60,24 +64,24 @@ class Cart {
         let cartCode =  `<tr>
                             <td>
                             <figure class="itemside align-items-center">
-                                <div class="aside col-lg-6"><img src="${cart.products.imageUrl}" class="card-img"></div>
+                                <div class="aside col-lg-6"><img src="${cart.product.imageUrl}" class="card-img"></div>
                                 <figcaption class="info">
-                                    <a href="../pages/view-product.html?product_id="${cart.products._id}" class="title text-dark">${cart.products.name}</a>
-                                    <p class="text-muted small" id="product_colors">Couleur: ${cart.products.colors}</p>
+                                    <a href="../pages/view-product.html?product_id="${cart.product._id}" class="title text-dark">${cart.product.name}</a>
+                                    <p class="text-muted small" id="product_colors">Couleur: ${cart.product.colors}</p>
                                 </figcaption>
                             </figure>
                             </td>
                             <td>
-                                <input class="quantityInputs" type="number" id="product_quantity_${cart.products._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
+                                <input class="quantityInputs" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
                             </td>
                             <td>
                             <div class="price-wrap"> 
-                                <span  class="price" data-price-price="${cart.products.price}" id="product_price_${cart.products._id}">${cart.products.price}€</br></span>
-                                <small class="text-muted">${cart.products.price}€/unité </small>
+                                <span  class="price" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">${cart.product.price}€</br></span>
+                                <small class="text-muted">${cart.product.price}€/unité </small>
                             </div>
                             </td>
                             <td class="text-right">
-                            <a href="" class="btn btn-danger btn_delete" data-delete-id="${cart.products._id}" data-delete-name="${cart.products.name}">Supprimer</a>
+                            <a href="" class="btn btn-danger btn_delete" data-delete-id="${cart.product._id}" data-delete-name="${cart.product.name}">Supprimer</a>
                             </td>
                         </tr>`;
 
@@ -88,36 +92,29 @@ class Cart {
         }
     }
 
-    //Méthode qui permet d'afficher le prix des produits à l'unité et d'afficher le prix final du panier
-    /*viewPrice(quantity, price, y){
+    //Méthode qui permet de modifier le prix avec les quantity inputs
+    modifyQuantity(quantity, y){
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
-            let productPrice = price * quantity[y].value;
-            console.log(productPrice);
+            cart.productsInCart[y][1] = quantity[y].value;
+            localStorage.setItem('productsInCart', JSON.stringify(cart.productsInCart));
         }
-    }*/
+    }
 
     //Méthode qui de modifier le prix du produit en fonction de sa quantité ce qui modifie la valeur finale du panier
-    modifyPrice(quantity, price, y){  
+    viewPrice(quantity, price, y){  
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
             //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
             let productPrice = price * quantity[y].value;
+            console.log(productPrice);
             //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
             let displayedProductPrice = document.getElementById('product_price_' + this.productsInCart[y][0]);
-            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";  
-        /*    
-            let totalProductsPrice = document.getElementById("total_price");
-            let finalProductsPrice = document.getElementById("final_price");
+            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";
 
-            //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
-            let productPrice = price * quantity[y].value;
-            //Puis on additionne chaque prix final de chaque produit pour avoir le prix total du panier
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            let totalPriceDisplay = document.getElementById('total_price');
             this.totalPrice += productPrice;
+            totalPriceDisplay.innerText = this.totalPrice + "€";
             
-            //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
-            let displayedProductPrice = document.getElementById('product_price_' + this.productsInCart[y][0]);
-            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";  
-            console.log(this.totalPrice);
-        */
         }
     }
 

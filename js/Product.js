@@ -141,7 +141,7 @@ class Product {
         let btnAddCart = document.getElementById('btn_cart');
 
         //On défini la valeur de la quantité du produit sur 1 avant que l'utilisateur ne le change (ou pas)
-        let productQuantity = 1;
+        let productQuantity = "1";
         //On récupère la valeur de l'input (de 1 à 10)
         document.getElementsByClassName('productQuantityInput')[0].addEventListener('input', function(){
             productQuantity = document.getElementById(`product_quantity_${id}`).value;
