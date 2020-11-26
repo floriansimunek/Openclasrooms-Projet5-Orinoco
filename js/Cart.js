@@ -47,7 +47,7 @@ class Cart {
                         })
                         .catch(error => {
                             //Récupération des messages d'erreurs en cas de problèmes(s)
-                            console.error(error);
+                            console.error(error);  
                         })  
             } 
         }
