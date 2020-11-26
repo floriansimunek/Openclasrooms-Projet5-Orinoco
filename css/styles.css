@@ -1,3 +1,7 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
   background-image: url(../images/800px_COLOURBOX25038287.jpg);
   object-fit: contain;
@@ -16,7 +20,7 @@ body {
 .image-banner #logo {
   filter: hue-rotate(-135deg);
 }
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 992px) {
   .image-banner #logo {
     display: none;
   }
@@ -31,6 +35,9 @@ body {
   .form-inline {
     display: none !important;
   }
+}
+.form-inline .form-control {
+  width: 500px !important;
 }
 
 html, body, header {

@@ -78,8 +78,8 @@ class Cart {
                             </td>
                             <td>
                                 <div class="price-wrap"> 
-                                    <span  class="price" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">${cart.product.price}€</br></span>
-                                    <small class="text-muted">${cart.product.price}€/unité </small>
+                                    <span  class="price text-primary h4" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">${cart.product.price}€</br></span>
+                                    <p class="text-muted">${cart.product.price}€/unité</p>
                                 </div>
                             </td>
                                 <td class="text-right">

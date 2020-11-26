@@ -52,7 +52,7 @@ class Product {
     //Méthode qui nous permet d'afficher les cards de chaque produit grâce à des variables
     displayCard(){       
         //Code HTML de la card avec Bootstrap
-        let cardCode = `<div class="col-lg-2 col-md-6 mb-4 product-card">
+        let cardCode = `<div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-10 mb-4 product-card">
                             <div class="card h-100">
                                 <a id="" href="pages/view-product.html?product_id=${this._id}"><img id="product_img" class="card-img-top" src="${this.imageUrl}" alt="Ourson ${this.name}"></a>
                                 <div class="card-body">
@@ -86,23 +86,24 @@ class Product {
                             </aside>
                             <div class="col-lg-4 mt-4 mb-4">
                                 <article>
-                                    <h3 class="title mb-4">${this.name}</h3>
+                                    <h3 class="title mb-4 text-primary h1">${this.name}</h3>
                                     <div class="mb-3">
-                                        <h6>Description</h6>
+                                        <h6 class="text-muted h5">Description</h6>
                                         <p>${this.description}</p>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-muted">Couleurs</label>
+                                        <label class="text-muted h5">Couleurs</label>
                                         <div id="product_colors"></div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-muted">Quantité</label><br>
+                                        <label class="text-muted h5">Quantité</label><br>
                                         <input class="form-control col-4 productQuantityInput" type="number" id="product_quantity_${this._id}" min="1" max="10" value="1">
                                     </div>
-                                    <div class="mb-3">
-                                        <p class="price h4">${this.price}€</p><br>
+                                    <div>
+                                        <label class="text-muted h5">Prix unitaire</label><br>
+                                        <p class="price h2 text-primary">${this.price}€</p>
                                     </div>
-                                    <div class="mb-4">
+                                    <div class="mt-5 mb-4">
                                         <a href="#" class="btn btn-primary">Acheter</a>
                                         <a href="cart.html" id="btn_cart" class="btn btn-secondary">Ajouter au panier</a>
                                     </div>

@@ -1,3 +1,7 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body{
     background-image: url(../images/800px_COLOURBOX25038287.jpg);
     object-fit: contain;
@@ -14,7 +18,7 @@ body{
     filter: hue-rotate(135deg);
     #logo{
         filter: hue-rotate(-135deg);
-        @media screen and (max-width: 960px){
+        @media screen and (max-width: 992px){
             display:none;
         }
     }
@@ -26,6 +30,9 @@ body{
 .form-inline{
     @media screen and (max-width: 720px){
         display:none !important;
+    }
+    .form-control{
+        width: 500px !important;
     }
 }
 
