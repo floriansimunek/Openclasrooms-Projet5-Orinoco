@@ -26,14 +26,14 @@ class Cart {
                         }).then(function(){
                             let productQuantityInCart = document.getElementsByClassName("quantityInputs");
                             let productPriceInCart = document.getElementsByClassName("price");
-                            let productTotalPriceInCart = productPriceInCart[i].textContent;
                             for(let y = 0; y < productQuantityInCart.length; y++){
                                 let productPrice = productPriceInCart[y].getAttribute('data-price-price');
                                 productQuantityInCart[y].addEventListener('input', function(){
+                                    //let productTotalPriceInCart = productPriceInCart[y].textContent;
                                     productQuantityInCart[i][1] = productQuantityInCart[y].value;
                                     cart.modifyQuantity(productQuantityInCart[i][1], y);
                                     cart.changeTotalProductPrice(productQuantityInCart[i][1], productPrice, y);
-                                    cart.displayTotalPrice(productTotalPriceInCart);
+                                    cart.displayTotalPrice(productPrice);
                                 })                                
                             }
                         }).then(function(){
@@ -115,14 +115,14 @@ class Cart {
     }
 
     //Méthode qui nous permet de connaître le prix total du panier et le prix final après réduction si réduction il y a
-    displayTotalPrice(productTotalPriceInCart){
-        productTotalPriceInCart = productTotalPriceInCart.replace("€", "");
-        productTotalPriceInCart = parseInt(productTotalPriceInCart);
+    displayTotalPrice(productPrice){
+        productPrice = productPrice.replace("€", "");
+        productPrice = parseInt(productPrice);
 
         let totalProductsPrice = document.getElementById("total_price");
         //let finalProductsPrice = document.getElementById("final_price");
-        
-        this.totalPrice += productTotalPriceInCart;
+    
+        this.totalPrice += productPrice;
         totalProductsPrice.innerText = this.totalPrice + "€";
     }
 
