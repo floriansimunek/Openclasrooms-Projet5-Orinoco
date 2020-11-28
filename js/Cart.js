@@ -19,21 +19,24 @@ class Cart {
                             cart.product = data;
                         }).then(function(){
                             cart.viewInCart(i);
+                            if(document.getElementById("display-cart") != null){
+                                let productTotalPriceInCart = document.getElementsByClassName("price")[i].textContent;
+                                cart.displayTotalPrice(productTotalPriceInCart);
+                            }
                         }).then(function(){
-                            //Partie qui nous permet d'afficher le prix des produits présent dans le panier après avoir afficher ces derniers
                             let productQuantityInCart = document.getElementsByClassName("quantityInputs");
                             let productPriceInCart = document.getElementsByClassName("price");
-                            //On boucle sur le nombre de produits dans le panier pour afficher les prix de tous les produits présents dans le panier uniquement
+                            let productTotalPriceInCart = productPriceInCart[i].textContent;
                             for(let y = 0; y < productQuantityInCart.length; y++){
                                 let productPrice = productPriceInCart[y].getAttribute('data-price-price');
-                                //On affiche le prix des produits multiplié par leurs quantité
-                                cart.viewPrice(productQuantityInCart, productPrice, y);
-                                productQuantityInCart[y].addEventListener('input', function(e){
-                                    cart.modifyQuantity(productQuantityInCart, y);
-                                    //La quantité du produit est changé par l'utilisateur donc on le réaffiche à chaque changements
-                                    cart.viewPrice(productQuantityInCart, productPrice, y);
-                                })
-                            }  
+                                productQuantityInCart[y].addEventListener('input', function(){
+                                    productQuantityInCart[i][1] = productQuantityInCart[y].value;
+                                    console.log(productQuantityInCart[i][1])
+                                    cart.modifyQuantity(productQuantityInCart[i][1], y);
+                                    cart.viewPrice(productQuantityInCart[i][1], productPrice, y);
+                                    cart.displayTotalPrice(productTotalPriceInCart);
+                                })                                
+                            }
                         }).then(function(){
                             //Partie qui nous permet de supprimer un élément du panier depuis le button correspondant
                             let btnSupprProductInCart = document.getElementsByClassName("btn_delete");
@@ -78,7 +81,7 @@ class Cart {
                             </td>
                             <td>
                                 <div class="price-wrap"> 
-                                    <span  class="price text-primary h4" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">${cart.product.price}€</br></span>
+                                    <span  class="price text-primary h4" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">${cart.product.price * cart.productsInCart[i][1]}€</br></span>
                                     <p class="text-muted">${cart.product.price}€/unité</p>
                                 </div>
                             </td>
@@ -97,7 +100,7 @@ class Cart {
     //Méthode qui permet de modifier le prix avec les quantity inputs
     modifyQuantity(quantity, y){
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
-            cart.productsInCart[y][1] = quantity[y].value;
+            cart.productsInCart[y][1] = quantity;
             localStorage.setItem('productsInCart', JSON.stringify(cart.productsInCart));
         }
     }
@@ -105,19 +108,23 @@ class Cart {
     //Méthode qui de modifier le prix du produit en fonction de sa quantité ce qui modifie la valeur finale du panier
     viewPrice(quantity, price, y){  
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
-            //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
-            let productPrice = price * quantity[y].value;
-            //console.log(productPrice);
+            let productPrice = price * quantity;
             //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
             let displayedProductPrice = document.getElementById('product_price_' + this.productsInCart[y][0]);
-            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";
-
-            let totalProductsPrice = document.getElementById("total_price");
-            let finalProductsPrice = document.getElementById("final_price");
-            
-            this.totalPrice += productPrice;
-            totalProductsPrice.innerText = this.totalPrice + "€";
+            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";  
         }
+    }
+
+    //Méthode qui nous permet de connaître le prix total du panier et le prix final après réduction si réduction il y a
+    displayTotalPrice(productTotalPriceInCart){
+        productTotalPriceInCart = productTotalPriceInCart.replace("€", "");
+        productTotalPriceInCart = parseInt(productTotalPriceInCart);
+
+        let totalProductsPrice = document.getElementById("total_price");
+        //let finalProductsPrice = document.getElementById("final_price");
+        
+        this.totalPrice += productTotalPriceInCart;
+        totalProductsPrice.innerText = this.totalPrice + "€";
     }
 
     //Méthode qui nous permet d'afficher un message pour signaler à l'utilisateur que son panier est vide
