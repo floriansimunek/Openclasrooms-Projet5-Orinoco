@@ -31,9 +31,8 @@ class Cart {
                                 let productPrice = productPriceInCart[y].getAttribute('data-price-price');
                                 productQuantityInCart[y].addEventListener('input', function(){
                                     productQuantityInCart[i][1] = productQuantityInCart[y].value;
-                                    console.log(productQuantityInCart[i][1])
                                     cart.modifyQuantity(productQuantityInCart[i][1], y);
-                                    cart.viewPrice(productQuantityInCart[i][1], productPrice, y);
+                                    cart.changeTotalProductPrice(productQuantityInCart[i][1], productPrice, y);
                                     cart.displayTotalPrice(productTotalPriceInCart);
                                 })                                
                             }
@@ -106,7 +105,7 @@ class Cart {
     }
 
     //Méthode qui de modifier le prix du produit en fonction de sa quantité ce qui modifie la valeur finale du panier
-    viewPrice(quantity, price, y){  
+    changeTotalProductPrice(quantity, price, y){  
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
             let productPrice = price * quantity;
             //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
