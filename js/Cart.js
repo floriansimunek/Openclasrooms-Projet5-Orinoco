@@ -22,6 +22,7 @@ class Cart {
                             if(document.getElementById("display-cart") != null){
                                 let productTotalPriceInCart = document.getElementsByClassName("price")[i].textContent;
                                 cart.displayTotalPrice(productTotalPriceInCart);
+                                //cart.displayTotalPrice(i);
                             }
                         }).then(function(){
                             let productQuantityInCart = document.getElementsByClassName("quantityInputs");
@@ -34,6 +35,7 @@ class Cart {
                                     cart.modifyQuantity(productQuantityInCart[i][1], y);
                                     cart.changeTotalProductPrice(productQuantityInCart[i][1], productPrice, y);
                                     cart.displayTotalPrice(productPrice);
+                                    //cart.displayTotalPrice(i);
                                 })                                
                             }
                         }).then(function(){
@@ -48,8 +50,7 @@ class Cart {
                             }
                         }).then(function(){
                             cart.emptyCart();
-                        })
-                        .catch(error => {
+                        }).catch(error => {
                             //Récupération des messages d'erreurs en cas de problèmes(s)
                             console.error(error);  
                         })  
@@ -68,7 +69,7 @@ class Cart {
         let cartCode =  `<tr>
                             <td>
                                 <figure class="itemside align-items-center">
-                                    <div class="aside col-lg-6"><a href="../pages/view-product.html?product_id=${cart.product._id}"><img src="${cart.product.imageUrl}" class="card-img"></a></div>
+                                    <div class="aside col-lg-6"><a href="../pages/view-product.html?product_id=${cart.product._id}"><img src="${cart.product.imageUrl}" alt="Ourson ${cart.product.name}" class="card-img"></a></div>
                                     <figcaption class="info ml-3 mt-3">
                                         <a href="../pages/view-product.html?product_id=${cart.product._id}" class="text-primary h3">${cart.product.name}</a>
                                         <p class="text-muted" id="product_colors">Couleurs: ${cart.product.colors}</p>
@@ -125,6 +126,14 @@ class Cart {
         this.totalPrice += productPrice;
         totalProductsPrice.innerText = this.totalPrice + "€";
     }
+
+    /*displayTotalPrice(i){
+        this.totalPrice = 0;
+        let totalProductsPrice = document.getElementById("total_price");
+        this.totalPrice += parseInt(this.productsInCart[i][1]) * parseInt(this.productsInCart[i][2]);
+        console.log(this.totalPrice);
+        totalProductsPrice.innerText = this.totalPrice + "€";
+    }*/
 
     //Méthode qui nous permet d'afficher un message pour signaler à l'utilisateur que son panier est vide
     displayEmptyCart(){

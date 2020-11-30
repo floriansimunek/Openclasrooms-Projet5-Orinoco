@@ -4,3 +4,4 @@ const productId = urlParams.get('product_id');
 
 let product = new Product();
 let cart = new Cart();
+let order = new Order();

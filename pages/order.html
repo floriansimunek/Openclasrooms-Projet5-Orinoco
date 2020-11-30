@@ -16,6 +16,7 @@
     <script src="../js/Ajax.js" defer></script>
     <script src="../js/Product.js" defer></script>
     <script src="../js/Cart.js" defer></script>
+    <script src="../js/Order.js" defer></script>
     <script src="../js/main.js" defer></script>
    </head>
    <body>
@@ -56,41 +57,14 @@
             <article class="card mb-4">
                <div class="card-body">
                   <h4 class="card-title mb-4">Panier</h4>
-                  <div class="row">
-                     <div class="col-lg-6">
-                        <figure class="itemside mb-4">
-                           <div class="aside"><img src="../images/teddy_1.jpg" class="border card-img"></div>
-                           <figcaption class="info">
-                              <p>Teddy #1</p>
-                              <span class="text-muted">2x = 40€ </span>
-                           </figcaption>
-                        </figure>
-                     </div>
-                     <div class="col-lg-6">
-                        <figure class="itemside mb-4">
-                           <div class="aside"><img src="../images/teddy_2.jpg" class="border card-img"></div>
-                           <figcaption class="info">
-                              <p>Teddy #2</p>
-                              <span class="text-muted">2x = 20€</span>
-                           </figcaption>
-                        </figure>
-                     </div>
-                     <div class="col-lg-6">
-                        <figure class="itemside  mb-4">
-                           <div class="aside"><img src="../images/teddy_3.jpg" class="border card-img"></div>
-                           <figcaption class="info">
-                              <p>Teddy #1</p>
-                              <span class="text-muted">2x = 60€</span>
-                           </figcaption>
-                        </figure>
-                     </div>
+                  <div class="row" id="cart-to-order">
+
                   </div>
                </div>
             </article>
             <article class="card mb-4" id="contact-form">
                <div class="card-body">
                   <h4 class="card-title mb-4">Informations de contact</h4>
-                  <form action="">
                      <div class="row">
                         <div class="form-group col-sm-6">
                            <label>Prénom</label>
@@ -105,22 +79,19 @@
                            <input type="email" placeholder="example@gmail.com" class="form-control contact-input" name="email">
                         </div>
                      </div>
-                  </form>
                </div>
                <div class="card-body">
                   <h4 class="card-title mb-4">Informations de livraison</h4>
-                  <form action="">
                      <div class="row">
                         <div class="form-group col-sm-6">
                            <label>Ville</label>
-                           <input type="text" placeholder="Écrire ici" class="form-control contact-input" name="city">
+                           <input type="text" placeholder="Votre ville" class="form-control contact-input" name="city">
                         </div>
                         <div class="form-group col-sm-12">
                            <label>Adresse</label>
-                           <input type="text" placeholder="Écrire ici" class="form-control contact-input" name="address">
+                           <input type="text" placeholder="Votre adress" class="form-control contact-input" name="address">
                         </div>
                      </div>
-                  </form>
                </div>
             </article>
          </div>
@@ -144,7 +115,7 @@
                      <dt>Total:</dt>
                      <dd class="h5">59.99€</dd>
                   </dl>
-                  <p class="small mb-3 text-muted">En cliquant vous acceptez les conditions d'utilisations </p>
+                  <p class="small mb-3 text-muted">En cliquant vous acceptez les <a href="#">conditions d'utilisations</a></p>
                   <a href="#" class="btn btn-primary btn-block" id="btn_purshase">Payer</a>
                </div>
             </div>

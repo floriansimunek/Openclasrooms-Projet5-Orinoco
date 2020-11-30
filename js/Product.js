@@ -80,7 +80,7 @@ class Product {
                             <aside class="col-lg-8">
                                 <article class="gallery-wrap">
                                     <div class="img-big-wrap">
-                                        <a href="#"><img class="card-img" src="${this.imageUrl}"></a>
+                                        <a href="#"><img class="card-img" alt="Ourson ${this.name}" src="${this.imageUrl}"></a>
                                     </div>
                                 </article>
                             </aside>
