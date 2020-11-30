@@ -68,6 +68,6 @@ class Order {
             },
             products: this.productArray
         }
-        return order; 
+        return order;
     }
 }
