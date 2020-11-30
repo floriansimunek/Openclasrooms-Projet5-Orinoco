@@ -58,7 +58,7 @@ class Order {
     }
 
     createOrder(userInfo){      
-        let order = {
+        let orderDatas = {
             contact: {
                 firstName: userInfo[0],
                 lastName: userInfo[1],
@@ -68,6 +68,8 @@ class Order {
             },
             products: this.productArray
         }
+        let ajaxOrder = new Ajax();
+        ajaxOrder.sendOrder(JSON.stringify(orderDatas));
         return order;
     }
 }

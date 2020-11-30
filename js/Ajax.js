@@ -12,12 +12,16 @@ class Ajax{
         }        
     }
 
-    sendOrder = async function(){
-        let order = await fetch("http://localhost:3000/api/teddies/order", {method: "POST"});
-        if(order.ok){
-            console.log('ok')
-        }else{
-            console.error("Error : ", order.status);
-        }
+    sendOrder = async function(orderDatas){
+        let order = await fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: orderDatas
+        }).then(res => {
+            return res.json();
+        }).then(data => console.log(data))
+        .catch(error => console.log('ERROR :', error))
     }
 }
