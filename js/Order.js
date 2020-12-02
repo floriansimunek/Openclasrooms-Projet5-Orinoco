@@ -69,7 +69,9 @@ class Order {
             products: this.productArray
         }
         let ajaxOrder = new Ajax();
-        ajaxOrder.sendOrder(JSON.stringify(orderDatas));
+        ajaxOrder.sendOrder(JSON.stringify(orderDatas)).then(response => {
+            console.log(response)
+        });
         return order;
     }
 }

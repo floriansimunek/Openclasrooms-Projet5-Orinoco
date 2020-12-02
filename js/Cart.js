@@ -3,7 +3,7 @@ class Cart {
     constructor() {
         this.productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
         this.product;
-        this.totalPrice = 0;
+        //this.totalPrice = 0;
         this.initialize();
     }
 
@@ -22,32 +22,34 @@ class Cart {
                             if(document.getElementById("display-cart") != null){
                                 let productTotalPriceInCart = document.getElementsByClassName("price")[i].textContent;
                                 cart.displayTotalPrice(productTotalPriceInCart);
-                                //cart.displayTotalPrice(i);
                             }
                         }).then(function(){
-                            let productQuantityInCart = document.getElementsByClassName("quantityInputs");
-                            let productPriceInCart = document.getElementsByClassName("price");
-                            for(let y = 0; y < productQuantityInCart.length; y++){
-                                let productPrice = productPriceInCart[y].getAttribute('data-price-price');
-                                productQuantityInCart[y].addEventListener('input', function(){
-                                    //let productTotalPriceInCart = productPriceInCart[y].textContent;
-                                    productQuantityInCart[i][1] = productQuantityInCart[y].value;
-                                    cart.modifyQuantity(productQuantityInCart[i][1], y);
-                                    cart.changeTotalProductPrice(productQuantityInCart[i][1], productPrice, y);
-                                    cart.displayTotalPrice(productPrice);
-                                    //cart.displayTotalPrice(i);
-                                })                                
-                            }
+                            let ii = i;
+                            setTimeout(() => {
+                                let productQuantityInCart = document.getElementsByClassName("quantity");
+                                let productPriceInCart = document.getElementsByClassName("price");
+
+                                let productPrice = productPriceInCart[ii].getAttribute('data-price-price');
+
+                                productQuantityInCart[ii].addEventListener('input', function(){
+                                    let quantityUpdate = productQuantityInCart[ii].value;
+                                    let totalProductPrice = parseInt(quantityUpdate) * parseInt(productPrice);
+                                    
+                                    cart.modifyQuantity(quantityUpdate, ii);
+                                    cart.changeTotalProductPrice(totalProductPrice, ii);
+                                }) 
+                            }, 500);
                         }).then(function(){
                             //Partie qui nous permet de supprimer un élément du panier depuis le button correspondant
                             let btnSupprProductInCart = document.getElementsByClassName("btn_delete");
-                            for (let y = 0; y < btnSupprProductInCart.length; y++) {
-                                btnSupprProductInCart[y].addEventListener('click', function(e){
+                            let ii = i;
+                            setTimeout(() => {
+                                btnSupprProductInCart[ii].addEventListener('click', function(e){
                                     let myProductId = this.getAttribute('data-delete-id');
                                     let myProductName = this.getAttribute('data-delete-name');
-                                    cart.deleteProductInCart(myProductId, myProductName, y);
-                                });
-                            }
+                                    cart.deleteProductInCart(myProductId, myProductName, ii);
+                                });                              
+                            }, 500);
                         }).then(function(){
                             cart.emptyCart();
                         }).catch(error => {
@@ -77,7 +79,7 @@ class Cart {
                                 </figure>
                             </td>
                             <td>
-                                <input class="quantityInputs form-control" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
+                                <input class="quantity form-control" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
                             </td>
                             <td>
                                 <div class="price-wrap"> 
@@ -98,20 +100,18 @@ class Cart {
     }
 
     //Méthode qui permet de modifier le prix avec les quantity inputs
-    modifyQuantity(quantity, y){
+    modifyQuantity(quantity, i){
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
-            cart.productsInCart[y][1] = quantity;
+            cart.productsInCart[i][1] = quantity;
             localStorage.setItem('productsInCart', JSON.stringify(cart.productsInCart));
         }
     }
 
     //Méthode qui de modifier le prix du produit en fonction de sa quantité ce qui modifie la valeur finale du panier
-    changeTotalProductPrice(quantity, price, y){  
+    changeTotalProductPrice(totalProductPrice, i){  
         if(document.getElementById("total_price") != null && document.getElementById("final_price") != null){
-            let productPrice = price * quantity;
-            //On multiplie le prix unitaire du produit par sa quantité dans le panier pour avoir le prix total du produit
-            let displayedProductPrice = document.getElementById('product_price_' + this.productsInCart[y][0]);
-            displayedProductPrice.innerText = JSON.stringify(productPrice) + "€";  
+            let displayedProductPrice = document.getElementById('product_price_' + this.productsInCart[i][0]);
+            displayedProductPrice.innerText = JSON.stringify(totalProductPrice) + "€";  
         }
     }
 
@@ -123,17 +123,10 @@ class Cart {
         let totalProductsPrice = document.getElementById("total_price");
         //let finalProductsPrice = document.getElementById("final_price");
     
-        this.totalPrice += productPrice;
-        totalProductsPrice.innerText = this.totalPrice + "€";
+        let totalPrice = 0;
+        totalPrice += productPrice;
+        totalProductsPrice.innerText = totalPrice + "€";
     }
-
-    /*displayTotalPrice(i){
-        this.totalPrice = 0;
-        let totalProductsPrice = document.getElementById("total_price");
-        this.totalPrice += parseInt(this.productsInCart[i][1]) * parseInt(this.productsInCart[i][2]);
-        console.log(this.totalPrice);
-        totalProductsPrice.innerText = this.totalPrice + "€";
-    }*/
 
     //Méthode qui nous permet d'afficher un message pour signaler à l'utilisateur que son panier est vide
     displayEmptyCart(){

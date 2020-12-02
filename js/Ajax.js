@@ -14,14 +14,18 @@ class Ajax{
 
     sendOrder = async function(orderDatas){
         let order = await fetch("http://localhost:3000/api/teddies/order", {
-            method: "POST",
+            method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'
             },
             body: orderDatas
-        }).then(res => {
+        })/*.then(res => {
+            console.log(res.json())
             return res.json();
-        }).then(data => console.log(data))
-        .catch(error => console.log('ERROR :', error))
+        }).then(data => {return data})
+        .catch(error => console.log('ERROR :', error))*/
+        if(order.ok){
+            return order.json();
+        }
     }
 }
