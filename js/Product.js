@@ -43,7 +43,7 @@ class Product {
                 this.displayProduct();
                 //Méthode qui nous permet d'ajouter des produits dans notre panier grâce à un bouton. Les produits sont stockés dans le localStorage
                 if(document.getElementById('btn_cart') != null) {
-                    this.addToCart(this._id, this.name);
+                    this.addToCart(this._id, this.name, this.price);
                 }
             }
         }
@@ -101,7 +101,7 @@ class Product {
                                     </div>
                                     <div>
                                         <label class="text-muted h5">Prix unitaire</label><br>
-                                        <p class="price h2 text-primary">${this.price}€</p>
+                                        <p class="price h2 text-primary" id="product_price_${this._id}">${this.price}€</p>
                                     </div>
                                     <div class="mt-5 mb-4">
                                         <a href="#" class="btn btn-primary">Acheter</a>
@@ -137,7 +137,7 @@ class Product {
     }
 
     //Méthode qui nous permet d'ajouter un produit dans le panier dans le localStorage avec l'id, le nom et la quantité du produit
-    addToCart(id, name){
+    addToCart(id, name, productPrice){
         let btnAddCart = document.getElementById('btn_cart');
 
         //On défini la valeur de la quantité du produit sur 1 avant que l'utilisateur ne le change (ou pas)
@@ -149,7 +149,7 @@ class Product {
 
         btnAddCart.addEventListener('click', function(e){
             //On créé un tableau de tableau (id + quantité)
-            let productArray = [id, productQuantity];
+            let productArray = [id, productQuantity, productPrice];
             let productsInCartArray = [productArray];
 
             //Quand le panier est vide on ajoute un produit

@@ -3,7 +3,7 @@ class Cart {
     constructor() {
         this.productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
         this.product;
-        //this.totalPrice = 0;
+        this.totalPrice = 0;
         this.initialize();
     }
 
@@ -19,37 +19,39 @@ class Cart {
                             cart.product = data;
                         }).then(function(){
                             cart.viewInCart(i);
-                            if(document.getElementById("display-cart") != null){
-                                let productTotalPriceInCart = document.getElementsByClassName("price")[i].textContent;
-                                cart.displayTotalPrice(productTotalPriceInCart);
+                        }).then(function(){
+                            let ii = i;
+                            //Partie qui nous permet de modifier la quantité d'un produit, calculer le prix total de chaque produit (price*quantity), et d'afficher le prix total du panier
+                            if(document.getElementById('total_price') != null){
+                                setTimeout(() => {
+                                    let productQuantityInCart = document.getElementsByClassName("quantity");
+                                    let productPriceInCart = document.getElementsByClassName("price");
+                                    let productPrice = productPriceInCart[ii].getAttribute('data-price-price');
+
+                                    productQuantityInCart[ii].addEventListener('input', function(){
+                                        let quantityUpdate = productQuantityInCart[ii].value;
+                                        let totalProductPrice = parseInt(quantityUpdate) * parseInt(productPrice);
+
+                                        cart.modifyQuantity(quantityUpdate, ii);
+                                        cart.changeTotalProductPrice(totalProductPrice, ii);
+                                        cart.displayTotalPrice();
+                                    })
+                                    cart.displayTotalPrice();
+                                }, 500);
                             }
                         }).then(function(){
-                            let ii = i;
-                            setTimeout(() => {
-                                let productQuantityInCart = document.getElementsByClassName("quantity");
-                                let productPriceInCart = document.getElementsByClassName("price");
-
-                                let productPrice = productPriceInCart[ii].getAttribute('data-price-price');
-
-                                productQuantityInCart[ii].addEventListener('input', function(){
-                                    let quantityUpdate = productQuantityInCart[ii].value;
-                                    let totalProductPrice = parseInt(quantityUpdate) * parseInt(productPrice);
-                                    
-                                    cart.modifyQuantity(quantityUpdate, ii);
-                                    cart.changeTotalProductPrice(totalProductPrice, ii);
-                                }) 
-                            }, 500);
-                        }).then(function(){
                             //Partie qui nous permet de supprimer un élément du panier depuis le button correspondant
-                            let btnSupprProductInCart = document.getElementsByClassName("btn_delete");
                             let ii = i;
-                            setTimeout(() => {
-                                btnSupprProductInCart[ii].addEventListener('click', function(e){
-                                    let myProductId = this.getAttribute('data-delete-id');
-                                    let myProductName = this.getAttribute('data-delete-name');
-                                    cart.deleteProductInCart(myProductId, myProductName, ii);
-                                });                              
-                            }, 500);
+                            if(document.getElementById('total_price') != null){
+                                let btnSupprProductInCart = document.getElementsByClassName("btn_delete");
+                                setTimeout(() => {
+                                    btnSupprProductInCart[ii].addEventListener('click', function(e){
+                                        let myProductId = this.getAttribute('data-delete-id');
+                                        let myProductName = this.getAttribute('data-delete-name');
+                                        cart.deleteProductInCart(myProductId, myProductName, ii);
+                                    });                              
+                                }, 500);
+                            }
                         }).then(function(){
                             cart.emptyCart();
                         }).catch(error => {
@@ -79,7 +81,7 @@ class Cart {
                                 </figure>
                             </td>
                             <td>
-                                <input class="quantity form-control" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
+                                <input class="quantity form-control" data-test="0" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
                             </td>
                             <td>
                                 <div class="price-wrap"> 
@@ -116,16 +118,24 @@ class Cart {
     }
 
     //Méthode qui nous permet de connaître le prix total du panier et le prix final après réduction si réduction il y a
-    displayTotalPrice(productPrice){
-        productPrice = productPrice.replace("€", "");
-        productPrice = parseInt(productPrice);
+    displayTotalPrice(){
+        this.totalPrice = 0;
+        for(let i = 0; i < this.productsInCart.length; i++){
+            let totalPriceDisplay = document.getElementById('total_price');
 
-        let totalProductsPrice = document.getElementById("total_price");
-        //let finalProductsPrice = document.getElementById("final_price");
-    
-        let totalPrice = 0;
-        totalPrice += productPrice;
-        totalProductsPrice.innerText = totalPrice + "€";
+            let productQuantity = cart.productsInCart[i][1];
+            let productPrice = cart.productsInCart[i][2];
+            
+            let totalProductPrice = productQuantity * productPrice;
+            this.totalPrice += totalProductPrice;
+            totalPriceDisplay.innerHTML = this.totalPrice + "€";
+        }
+
+        //Affichage du prix final avec réduction
+        let finalPriceDisplay = document.getElementById('final_price');
+        let reductionPriceDisplay = parseInt(document.getElementById('reduction_price').textContent.replace('€', '').replace('-',''));
+
+        finalPriceDisplay.innerHTML = `<strong>${this.totalPrice - reductionPriceDisplay}€</strong>`;
     }
 
     //Méthode qui nous permet d'afficher un message pour signaler à l'utilisateur que son panier est vide
