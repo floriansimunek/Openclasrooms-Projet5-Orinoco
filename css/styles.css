@@ -125,7 +125,7 @@ html, body, header {
 }
 .product-card .card-img-top {
   object-fit: cover;
-  height: 175px;
+  height: 200px;
   border-radius: 2% 2% 0% 0%;
   transition: all 0.5s ease;
 }

@@ -136,6 +136,7 @@ class Cart {
         let reductionPriceDisplay = parseInt(document.getElementById('reduction_price').textContent.replace('€', '').replace('-',''));
 
         finalPriceDisplay.innerHTML = `<strong>${this.totalPrice - reductionPriceDisplay}€</strong>`;
+        localStorage.setItem('totalCartPrice', finalPriceDisplay.textContent)
     }
 
     //Méthode qui nous permet d'afficher un message pour signaler à l'utilisateur que son panier est vide
