@@ -104,8 +104,7 @@ class Product {
                                         <p class="price h2 text-primary" id="product_price_${this._id}">${this.price}€</p>
                                     </div>
                                     <div class="mt-5 mb-4">
-                                        <a href="#" class="btn btn-primary">Acheter</a>
-                                        <a href="cart.html" id="btn_cart" class="btn btn-secondary">Ajouter au panier</a>
+                                        <a href="cart.html" id="btn_cart" class="btn btn-primary">Ajouter au panier</a>
                                     </div>
                                 </article>
                             </div>

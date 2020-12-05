@@ -54,10 +54,13 @@ class Order {
                                         </div>
                                     </div>
                                 </div>`;
+                                
+        let codeIfCartEmpty = `<h2 class="mt-3">Votre panier est vide</h2>`;
 
         if(document.getElementById('cart-to-order') != null){
             let displayCart = document.getElementById('cart-to-order');
             displayCart.innerHTML += cartToOrderCode;
+           
             this.productArray.push(order.product._id);
 
             let totalPriceDisplay = document.getElementById('totalCartPrice');
@@ -72,7 +75,7 @@ class Order {
             if(this.userInfosArray.length === 0 || this.userInfosArray.length > 0){
                 this.userInfosArray.push(formInputs[i].value)
             }
-        }    
+        }
         this.createOrder(this.userInfosArray);   
     }
 
@@ -81,9 +84,9 @@ class Order {
             contact: {
                 firstName: userInfo[0],
                 lastName: userInfo[1],
-                address: userInfo[2],
+                email: userInfo[2],
                 city: userInfo[3],
-                email: userInfo[4]
+                address: userInfo[4]
             },
             products: this.productArray
         }
@@ -108,10 +111,12 @@ class Order {
 
         let orderInfos = JSON.parse(localStorage.getItem('order'));
         let orderIdDisplay = document.getElementById('orderId-display');
-        orderIdDisplay.innerText = `Votre commande (${orderInfos.orderId})`;
+        orderIdDisplay.innerHTML = `Votre commande (<strong>${orderInfos.orderId}</strong>)`;
 
-        let recapCode = `<div class="alert alert-warning d-flex justify-content-center my-5 w-50" role="alert">
-                            ${orderInfos.contact.firstName} ${orderInfos.contact.lastName.toUpperCase()}, Merci pour votre commande !<br>
+        let recapCode = `<div class="alert alert-warning d-flex flex-column align-items-center my-5 w-50" role="alert">
+                            <p><strong>${orderInfos.contact.firstName} ${orderInfos.contact.lastName.toUpperCase()}</strong>, Merci pour votre commande !</p>
+                            <p>Adresse de livraison : <strong>${orderInfos.contact.address}, ${orderInfos.contact.city}</strong></p>
+                            <p>Retrouvez les informations de votre commande sur : <strong>${orderInfos.contact.email}</strong></p>
                         </div>`;
         orderInfosRecapDisplay.innerHTML = recapCode;
 
