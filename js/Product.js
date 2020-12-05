@@ -61,7 +61,7 @@ class Product {
                                     </h4>
                                     <h5 id="product_price" class="d-flex justify-content-center">${this.price}€</h5>
                                     <hr>
-                                    <a href="pages/view-product.html?product_id=${this._id}" class="btn btn-info col-lg-8 d-flex mx-auto">Voir le produit</a>
+                                    <a href="pages/view-product.html?product_id=${this._id}" class="btn btn-info col-xl-9 col-lg-9 col-md-12 d-flex justify-content-center mx-auto">Voir le produit</a>
                                 </div>
                             </div>
                         </div>`;
@@ -159,7 +159,6 @@ class Product {
             //Et sinon on récupère la liste de produit pour voir si il n'est pas déjà dans le panier
             }else{
                 let productsInCartArray = JSON.parse(localStorage.getItem("productsInCart"));
-
                 //Ajout panier
                 if(JSON.stringify(productsInCartArray).indexOf(JSON.stringify(productArray)) === -1){
                     productsInCartArray.push(productArray);

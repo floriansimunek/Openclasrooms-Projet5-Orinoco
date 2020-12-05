@@ -19,13 +19,12 @@ class Ajax{
                 'Content-Type' : 'application/json'
             },
             body: orderDatas
-        })/*.then(res => {
-            console.log(res.json())
-            return res.json();
-        }).then(data => {return data})
-        .catch(error => console.log('ERROR :', error))*/
+        })
+
         if(order.ok){
             return order.json();
+        } else {
+            console.log("Error : ", order.json());
         }
     }
 }
