@@ -8,6 +8,7 @@ class Order {
         this.initialize();
     }
 
+    //Méthode qui se lance à la création de la classe
     initialize(){
         if(localStorage.length > 0){
             for(let i = 0; i < this.cart.length; i++){
@@ -42,6 +43,7 @@ class Order {
         }
     }
 
+    //Méthode qui nous permet d'afficher les articles que l'utilisateur a dans son panier
     displayCart(i){
         let cartToOrderCode =  `<div class="col-lg-5 product-card my-2">
                                     <div class="card">
@@ -69,6 +71,7 @@ class Order {
         }
     }
 
+    //Méthode qui nous permet de récupèrer les informations de l'utilisateur passées dans le formulaire de contact/livraison
     retrieveUserInfos(){
         let formInputs = document.getElementsByTagName('input');
         for(let i = 1; i < formInputs.length; i++){
@@ -79,6 +82,7 @@ class Order {
         this.createOrder(this.userInfosArray);   
     }
 
+    //Méthode qui nous permet de créer une commande en l'envoyant à l'API et ensuite on récupère sa réponse
     createOrder(userInfo){      
         let orderDatas = {
             contact: {
@@ -98,6 +102,7 @@ class Order {
         return order;
     }
 
+    //Méthode qui nous permet, depuis la réponse de l'API après la commande, de résumé les informations à l'utilisateur (articles, adresse de livraison ...)
     recapOrder(i){
         let orderInfosRecapDisplay = document.getElementById('recap-order');
         let productsInfoRecapDisplay = document.getElementById('products-recap-order');

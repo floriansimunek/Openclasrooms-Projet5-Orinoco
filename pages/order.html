@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <!--  -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/styles.css" rel="stylesheet">
-        <title>Commande - Orinoco</title>
+        <!-- Bootstrap + Font Awesome -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" defer></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+        <!-- Script JS (Classes) -->
         <script src="../js/Ajax.js" defer></script>
         <script src="../js/Product.js" defer></script>
         <script src="../js/Cart.js" defer></script>
@@ -17,6 +19,7 @@
         <script src="../js/main.js" defer></script>
     </head>
     <body>
+        <!-- Header of the page (Navbar Bootstrap) -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,16 +52,19 @@
                 </div>
             </div>
         </nav>
+        <!-- Order array -->
         <div class="row mt-5 mb-5 justify-content-center">
             <div class="col-lg-7">
+                <!-- Products cards to order (in cart) -->
                 <article class="card mb-4">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Panier</h4>
                         <div class="row d-flex justify-content-center" id="cart-to-order">
-                            
+                            <!-- get element -->
                         </div>
                     </div>
                 </article>
+                <!-- Formulaires de contact / Récupération des informations des utilisateurs -->
                 <article class="card mb-4" id="contact-form">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Informations de contact</h4>
@@ -92,32 +98,34 @@
                     </div>
                 </article>
             </div>
+            <!-- Aside résumé de la commande, moyen de paiement, livraison, prix final-->
             <aside class="col-lg-4">
                 <div class="card shadow">
                     <div class="card-body">
                         <h4 class="mb-3">Résumé</h4>
-                        <dl class="">
-                            <dt class="text-info">Livraison</dt>
-                            <dd>Pick-up</dd>
-                        </dl>
-                        <dl class="">
-                            <dt class="text-info">Type de livraison</dt>
-                            <dd>Standard</dd>
-                        </dl>
-                        <dl class="">
-                            <dt class="text-info">Méthode de paiement</dt>
-                            <dd>Carte Bancaire</dd>
-                        </dl>
-                        <dl class="">
-                            <dt>Total</dt>
-                            <dd class="h5" id="totalCartPrice"></dd>
-                        </dl>
+                        <div class="">
+                            <label class="text-info"><strong>Livraison:</strong></label>
+                            <p>Pick-up</p>
+                        </div>
+                        <div class="">
+                            <label class="text-info"><strong>Type de livraison:</strong></label>
+                            <p>Standard</p>
+                        </div>
+                        <div class="">
+                            <label class="text-info"><strong>Méthode de paiement:</strong></label>
+                            <p>Carte Bancaire</p>
+                        </div>
+                        <div class="">
+                            <label><strong>Total:</strong></label>
+                            <p class="h5" id="totalCartPrice"></p>
+                        </div>
                         <p class="small mb-3 text-muted">En cliquant vous acceptez les <a href="#">conditions d'utilisations</a></p>
                         <a href="recap-order.html" class="btn btn-primary btn-block" id="btn_purshase">Payer</a>
                     </div>
                 </div>
             </aside>
         </div>
+        <!-- Footer of the page -->
         <footer class="text-white">
             <div class="footer-icons bg-info col-lg-12 col-md-12 py-5">
                 <div id="" class="footer-icons-block md-5 container d-flex justify-content-center">
@@ -128,7 +136,7 @@
                     <a href="#" class="fa fa-linkedin mx-2"></a>
                 </div>
             </div>
-            <div class="footer-copyright bg-dark text-center py-3 text-info">© 2020 Copyright : <span class="text-white">Orinoco</span></div>
+            <div class="footer-copyright bg-dark text-center py-3 text-info">© 2020 Copyright<span class="text-white"> : Orinoco</span></div>
         </footer>
     </body>
 </html>

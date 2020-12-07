@@ -143,7 +143,10 @@ class Cart {
     displayEmptyCart(){
         let emptyCart = document.getElementById('empty-cart');
         emptyCart.classList.add('d-flex', 'justify-content-center');
-        emptyCart.innerHTML = '<h2 class="mt-3">Votre panier est vide</h2>';
+        emptyCart.innerHTML =  `<div class="d-flex flex-column align-items-center">
+                                    <h2 class="mt-5 text-info font-weight-bold text-uppercase">Votre panier est vide</h2>
+                                    <a href="../index.html" class="btn btn-info my-5 w-50">Retourner au menu</a>
+                                </div>`;
     }
 
     //Méthode qui nous permet de supprimer un produit du panier en cliquant sur un button grâce à son ID

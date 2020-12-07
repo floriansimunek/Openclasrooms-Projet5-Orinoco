@@ -127,10 +127,10 @@ class Product {
             //On récupère toutes les couleurs de chaque produit que l'on affiche
             for(let y = 0; y < this.colors.length; y++){
                 //Code HTML pour les couleurs (boutons radios selectionnables)
-                productColors.innerHTML +=  `<label class="form-check-inline">
-                                                <input type="radio" name="option_size" value="option${y}">
-                                                <span class="ml-1">${this.colors[y]}</span>
-                                            </label>`;
+                productColors.innerHTML += `<div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="radio_${y}" name="radio_colors" class="custom-control-input">
+                                                <label class="custom-control-label" for="radio_${y}">${this.colors[y]}</label>
+                                            </div>`;
             }
         }     
     }
