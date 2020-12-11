@@ -180,4 +180,12 @@ footer {
   }
 }
 
+#th-quantity, #th-price {
+  width: 120px;
+}
+
+#th-void {
+  width: 200px;
+}
+
 /*# sourceMappingURL=styles.css.map */
