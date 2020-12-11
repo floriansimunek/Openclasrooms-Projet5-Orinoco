@@ -11,6 +11,9 @@ body{
     padding: 0;
     padding-bottom: 232px;
     position: relative;
+    @media screen and (max-width: 720px) {
+        padding-bottom: 627px;      
+    }
 }
 
 .row{
@@ -166,4 +169,11 @@ footer{
 /* view.product.html PRODUCT CARD */
 .productQuantityInput{
     text-align: center;
+}
+
+/* cart.html */
+#display-cart{
+    @media screen and (max-width: 600px){
+        display: column;     
+    }
 }

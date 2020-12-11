@@ -65,6 +65,9 @@ class Cart {
         if (document.getElementById('empty-cart') && localStorage.productsInCart === '[]' || document.getElementById('empty-cart') && localStorage.length === 0) {
             this.displayEmptyCart();
         }
+        if(document.getElementById('order-display') && localStorage.productsInCart === '[]' || document.getElementById('order-display') && localStorage.length === 0){
+            this.displayEmptyCart();
+        }
     }
 
     //Méthode qui nous permet d'afficher chaque produit présent dans le panier
@@ -144,12 +147,25 @@ class Cart {
 
     //Méthode qui nous permet d'afficher un message pour signaler à l'utilisateur que son panier est vide
     displayEmptyCart() {
-        let emptyCart = document.getElementById('empty-cart');
-        emptyCart.classList.add('d-flex', 'justify-content-center');
-        emptyCart.innerHTML =  `<div class="d-flex flex-column align-items-center text-center">
-                                    <h2 class="mt-5 text-info font-weight-bold text-uppercase">Votre panier est vide</h2>
-                                    <a href="../index.html" class="btn btn-info my-5 w-50">Retourner à l'accueil</a>
-                                </div>`;
+        let emptyCode =`<div class="card col-lg-8 col-md-12 col-sm-12 mb-3">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <h2 class="mt-5 text-info font-weight-bold text-uppercase">Votre panier est vide</h2>
+                                <a href="../index.html" class="btn btn-info my-5 col-lg-8 col-md-12 col-sm-11 mb-3">Retourner à l'accueil</a>
+                            </div>
+                        </div>`;
+                                
+
+        if(document.getElementById('empty-cart') != null){
+            let emptyCart = document.getElementById('empty-cart');
+            emptyCart.classList.add('d-flex', 'justify-content-center');
+            emptyCart.innerHTML =  emptyCode;
+        }
+
+        if(document.getElementById('order-display') != null){
+            let emptyOrder = document.getElementById('order-display');
+            emptyOrder.classList.add('d-flex', 'justify-content-center');
+            emptyOrder.innerHTML = emptyCode;
+        }
     }
 
     //Méthode qui nous permet de supprimer un produit du panier en cliquant sur un button grâce à son ID
