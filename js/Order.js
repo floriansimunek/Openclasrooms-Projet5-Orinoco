@@ -35,9 +35,6 @@ class Order {
                 purshaseBtn.addEventListener('click', function (e) {
                     e.preventDefault();
                     order.retrieveUserInfos();
-                    setTimeout(() => {
-                        document.location.replace('recap-order.html');
-                    }, 100)
                 });
             }
         }
@@ -79,7 +76,16 @@ class Order {
                 this.userInfosArray.push(formInputs[i].value)
             }
         }
-        this.createOrder(this.userInfosArray);
+
+        if(this.userInfosArray[0] === '' || this.userInfosArray[1] === '' || this.userInfosArray[2] === '' || this.userInfosArray[3] === '' || this.userInfosArray[4] === ''){
+            alert('Vous devez remplir le formulaire de contact !');
+            window.location.reload();
+        } else {
+            this.createOrder(this.userInfosArray);
+            setTimeout(() => {
+                window.location.replace('recap-order.html');
+            },100)
+        }
     }
 
     //Méthode qui nous permet de créer une commande en l'envoyant à l'API et ensuite on récupère sa réponse
