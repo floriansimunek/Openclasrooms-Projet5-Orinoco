@@ -172,8 +172,20 @@ footer{
 }
 
 /* cart.html */
+.table-shopping-cart{
+    thead{
+        @media screen and (max-width: 600px){
+            display:none;
+        }        
+    }
+}
+
 #display-cart{
-    @media screen and (max-width: 600px){
-        display: column;     
+    tr{
+        @media screen and (max-width: 600px){
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 }

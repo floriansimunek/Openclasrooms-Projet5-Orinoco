@@ -167,8 +167,16 @@ footer {
 
 /* cart.html */
 @media screen and (max-width: 600px) {
-  #display-cart {
-    display: column;
+  .table-shopping-cart thead {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #display-cart tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
