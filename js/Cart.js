@@ -73,7 +73,8 @@ class Cart {
         let cartCode = `<tr>
                             <td>
                                 <figure class="itemside align-items-center">
-                                    <div class="aside col-lg-6"><a href="../pages/view-product.html?product_id=${cart.product._id}"><img src="${cart.product.imageUrl}" alt="Ourson ${cart.product.name}" class="card-img"></a></div>
+                                    <div class="aside col-lg-6"><a href="../pages/view-product.html?product_id=${cart.product._id}"><img src="${cart.product.imageUrl}" 
+                                    alt="Ourson ${cart.product.name}" class="card-img"></a></div>
                                     <figcaption class="info ml-3 mt-3">
                                         <a href="../pages/view-product.html?product_id=${cart.product._id}" class="text-primary h3">${cart.product.name}</a>
                                         <p class="text-muted" id="product_colors">Couleurs: ${cart.product.colors}</p>
@@ -81,11 +82,13 @@ class Cart {
                                 </figure>
                             </td>
                             <td>
-                                <input class="quantity form-control" data-test="0" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" value="${cart.productsInCart[i][1]}">
+                                <input class="quantity form-control" data-test="0" type="number" id="product_quantity_${cart.product._id}" min="1" max="10" 
+                                value="${cart.productsInCart[i][1]}">
                             </td>
                             <td>
                                 <div class="price-wrap"> 
-                                    <span  class="price text-primary h4" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">${cart.product.price * cart.productsInCart[i][1]}€</br></span>
+                                    <span  class="price text-primary h4" data-price-price="${cart.product.price}" id="product_price_${cart.product._id}">
+                                    ${cart.product.price * cart.productsInCart[i][1]}€</br></span>
                                     <p class="text-muted">${cart.product.price}€/unité</p>
                                 </div>
                             </td>
@@ -145,7 +148,7 @@ class Cart {
         emptyCart.classList.add('d-flex', 'justify-content-center');
         emptyCart.innerHTML =  `<div class="d-flex flex-column align-items-center text-center">
                                     <h2 class="mt-5 text-info font-weight-bold text-uppercase">Votre panier est vide</h2>
-                                    <a href="../index.html" class="btn btn-info my-5 w-50">Retourner au menu</a>
+                                    <a href="../index.html" class="btn btn-info my-5 w-50">Retourner à l'accueil</a>
                                 </div>`;
     }
 

@@ -6,6 +6,11 @@ body {
   background-image: url(../images/800px_COLOURBOX25038287.jpg);
   object-fit: contain;
   background-repeat: repeat;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 232px;
+  position: relative;
 }
 
 .row {
@@ -29,6 +34,9 @@ body {
     display: none;
   }
 }
+.image-banner #header-line {
+  filter: hue-rotate(-135deg);
+}
 @media screen and (max-width: 720px) {
   .image-banner {
     display: none;
@@ -44,11 +52,18 @@ body {
   width: 500px !important;
 }
 
-html, body, header {
+html {
   height: 100%;
 }
 
 /* FOOTER (ICONS) */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 @media screen and (max-width: 600px) {
   .footer-icons-block {
     display: flex;

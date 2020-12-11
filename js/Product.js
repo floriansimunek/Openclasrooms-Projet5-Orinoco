@@ -120,7 +120,7 @@ class Product {
 
     //Méthode qui permet de récupérer les couleurs de chaque produit et de les afficher dans la card du produit unique
     getProductColors() {
-        document.head.innerHTML += '<title>' + this.name + ' - Orinoco</title>';
+        document.head.innerHTML += `<title>${this.name} - Orinoco</title>`;
         if (document.getElementById('product_colors') != null) {
             let productColors = document.getElementById('product_colors');
 
