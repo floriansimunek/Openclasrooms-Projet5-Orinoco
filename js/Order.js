@@ -80,12 +80,16 @@ class Order {
         if(this.userInfosArray[0] === '' || this.userInfosArray[1] === '' || this.userInfosArray[2] === '' || this.userInfosArray[3] === '' || this.userInfosArray[4] === ''){
             alert('Vous devez remplir le formulaire de contact !');
             window.location.reload();
-        } else if(this.userInfosArray[0].length < 2){
-            alert('Votre prénom est trop court');
-        } else if(this.userInfosArray[1].length < 2){
-            alert('Votre nom est trop court');
-        } else if(!(this.userInfosArray[2].length > 5 && this.userInfosArray[2].includes('@') && this.userInfosArray[2].includes('.'))){
-            alert('Votre email n\'est pas au bon format');
+        } else if(!(/^[a-zA-Z]{2,30}$/.test(this.userInfosArray[0]))){
+            document.getElementById('firstname_error').innerHTML = "Prénom au format incorrect. Veuillez utiliser uniquement des lettres, de 2 à 30 caractères.";
+        } else if(this.userInfosArray[1]){
+            
+        } else if(this.userInfosArray[2]){
+            
+        } else if(this.userInfosArray[3]){
+            
+        } else if(this.userInfosArray[4]){
+
         } else {
             this.createOrder(this.userInfosArray);
             setTimeout(() => {
