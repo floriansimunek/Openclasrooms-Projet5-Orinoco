@@ -80,14 +80,14 @@ class Order {
         if(this.userInfosArray[0] === '' || this.userInfosArray[1] === '' || this.userInfosArray[2] === '' || this.userInfosArray[3] === '' || this.userInfosArray[4] === ''){
             alert('Vous devez remplir le formulaire de contact !');
             window.location.reload();
-        } else if(!(/^[a-zA-Z]{2,30}$/.test(this.userInfosArray[0]))){
-            document.getElementById('firstname_error').innerHTML = "Prénom au format incorrect. Veuillez utiliser uniquement des lettres, de 2 à 30 caractères.";
-        } else if(this.userInfosArray[1]){
-            
-        } else if(this.userInfosArray[2]){
-            
-        } else if(this.userInfosArray[3]){
-            
+        } else if(!(/^[A-Z][A-Za-z\é\è\ê\-]{2,30}$/.test(this.userInfosArray[0]))){
+            document.getElementById('firstname_error').innerHTML = "Prénom au format incorrect. Veuillez utiliser uniquement des lettres (ou des tirets), de 2 à 30 caractères.";
+        } else if(!(/^[A-Z][A-Za-z\é\è\ê\-]{2,30}$/.test(this.userInfosArray[1]))){
+            document.getElementById('lastname_error').innerHTML = "Nom au format incorrect. Veuillez utiliser uniquement des lettres (ou des tirets), de 2 à 30 caractères.";
+        } else if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.userInfosArray[2]))){
+            document.getElementById('email_error').innerHTML = "Email au format incorrect. Veuillez utiliser le format example@domaine.ext";              
+        } else if(!(/^[A-Z][A-Za-z\é\è\ê\-]{2,30}$/.test(this.userInfosArray[3]))){
+            document.getElementById('city_error').innerHTML = "Ville au format incorrect. Veuillez utiliser uniquement des lettres (ou des tirets), de 2 à 30 caractères.";
         } else if(this.userInfosArray[4]){
 
         } else {
