@@ -88,8 +88,8 @@ class Order {
             document.getElementById('email_error').innerHTML = "Email au format incorrect. Veuillez utiliser le format example@domaine.ext";              
         } else if(!(/^[A-Z][A-Za-z\é\è\ê\-]{2,30}$/.test(this.userInfosArray[3]))){
             document.getElementById('city_error').innerHTML = "Ville au format incorrect. Veuillez utiliser uniquement des lettres (ou des tirets), de 2 à 30 caractères.";
-        } else if(this.userInfosArray[4]){
-
+        } else if(!(/^\d+\s[A-z\,\ ]+\s[A-z\,\ ]+[0-9\,\ ]+[a-zA-Z]*/.test(this.userInfosArray[4]))){
+            document.getElementById('address_error').innerHTML = "Adresse au format incorrect. Veuillez indiquer un numéro et le nom de la rue. (10 rue example)";
         } else {
             this.createOrder(this.userInfosArray);
             setTimeout(() => {
